@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S10 Tab Trả tiền mình nợ</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2B2B2A}a:hover{color:#000000}
+.col{display:flex;flex-direction:column;gap:12px;width:390px}
+.st{font-size:16px;line-height:20px;font-weight:700;color:#4F4F4B}
+.ph{width:390px;height:844px;box-sizing:border-box;border:1px solid #BDBDB8;border-radius:24px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.bar{flex:none;display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:64px;box-sizing:border-box;padding:8px 16px;border-bottom:1px solid #E4E4E0}
+.bar b{font-size:18px;line-height:24px}
+.bd{flex:1;padding:12px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden;font-size:16px;line-height:22px}
+.ft{flex:none;padding:12px 16px 12px;border-top:1px solid #E4E4E0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:24px}
+.btn{height:52px;border-radius:12px;background:#2B2B2A;color:#FFFFFF;font-size:17px;font-weight:700;border:0;width:100%;font-family:inherit}
+.btn2{min-height:44px;border-radius:12px;background:#FFFFFF;color:#2B2B2A;border:1px solid #8F8F8A;font-size:16px;font-weight:600;width:100%;font-family:inherit;padding:0 14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.mu{color:#55554F}
+.h2{font-size:17px;line-height:24px;font-weight:700;margin:0}
+.debt{border:2px solid #2B2B2A;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.big{font-size:32px;line-height:40px;font-weight:700;font-variant-numeric:tabular-nums}
+.mn{font-weight:700;font-variant-numeric:tabular-nums}
+.qr{width:200px;height:200px;align-self:center;border:2px dashed #8F8F8A;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#3F3F3B;background:repeating-linear-gradient(45deg,#F3F3F0,#F3F3F0 8px,#FFFFFF 8px,#FFFFFF 16px)}
+.mini{border:1px solid #D4D4CF;border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:44px}
+.bdg{display:inline-flex;align-items:center;gap:4px;font-size:16px;line-height:22px;font-weight:600;padding:2px 10px;border-radius:12px;background:#ECECE8;color:#3F3F3B;white-space:nowrap}
+.sk{background:#E6E6E2;border-radius:8px}
+.emp{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;padding:24px}
+.ill{width:96px;height:96px;border-radius:48px;background:#ECECE8}
+.ban{border:1px solid #8A3B26;background:#F6EFEC;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;color:#5A2516}
+.tabs{flex:none;height:64px;border-top:1px solid #D4D4CF;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));background:#FFFFFF}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:16px;line-height:20px;color:#55554F;text-decoration:none;font-weight:600}
+.tab.on{color:#1F1F1E;font-weight:700;box-shadow:inset 0 3px 0 #2B2B2A}
+.ti{position:relative;display:inline-flex}
+.dot{position:absolute;top:-3px;right:-7px;width:12px;height:12px;box-sizing:border-box;border-radius:6px;background:#D92D20;border:2px solid #FFFFFF}
+</style>
+</helmet>
+<div style="width: 1760px; height: 968px; box-sizing: border-box; padding: 40px; background: #FAFAF8; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #1F1F1E; display: flex; gap: 40px">
+
+<div class="col">
+<div class="st">S10 · Bình thường (Tuấn, chuyển cho 2 người)</div>
+<div class="ph">
+<div class="bar"><b>Vũng Tàu 2N1Đ</b><span class="mu">Trả tiền · Tuấn cần chuyển <span class="mn">270.000 ₫</span> · 2 lần</span></div>
+<div class="bd">
+<div class="debt">
+<div class="row"><b>1/2 · Gửi Hùng</b><span class="bdg">Chưa chuyển</span></div>
+<span class="big">190.000 ₫</span>
+<div class="qr">QR minh họa<br>VietQR · 190.000 ₫</div>
+<span>MB Bank · 0000 1111 2222<br><b>NGUYEN VAN HUNG</b></span>
+<button class="btn2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Copy số tài khoản</button>
+<span class="mu">Mở app ngân hàng quét mã là xong, số tiền đã điền sẵn.</span>
+</div>
+<div class="mini"><span><b>2/2 · Gửi Linh</b><br><span class="mn">80.000 ₫</span></span><span class="bdg">Chưa chuyển</span></div>
+</div>
+<div class="ft">
+<button class="btn">Tôi đã chuyển cho Hùng</button>
+</div>
+<nav class="tabs" aria-label="Trang kèo">
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span>Kèo</a>
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg></span>Chi tiêu</a>
+<a class="tab on" href="#" aria-current="page"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 14h3v3M21 14v7h-7"></path></svg></span>Trả tiền</a>
+</nav>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S10 · Trống (không nợ ai)</div>
+<div class="ph">
+<div class="bar"><b>Vũng Tàu 2N1Đ</b><span class="mu">Trả tiền</span></div>
+<div class="bd">
+<div class="emp">
+<div class="ill" aria-hidden="true"></div>
+<h2 class="h2" style="font-size: 20px; line-height: 28px">Bạn không nợ ai hết</h2>
+<span class="mu">Khi có khoản chi chia cho bạn, số tiền và mã QR sẽ hiện ở đây.</span>
+</div>
+</div>
+<div class="ft">
+<button class="btn">Xem chi tiêu</button>
+</div>
+<nav class="tabs" aria-label="Trang kèo">
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span>Kèo</a>
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg></span>Chi tiêu</a>
+<a class="tab on" href="#" aria-current="page"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 14h3v3M21 14v7h-7"></path></svg></span>Trả tiền</a>
+</nav>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S10 · Đang tải</div>
+<div class="ph" aria-busy="true">
+<div class="bar"><div class="sk" style="width: 180px; height: 22px"></div><div class="sk" style="width: 240px; height: 16px"></div></div>
+<div class="bd">
+<div class="sk" style="height: 470px; border-radius: 14px; display: flex; align-items: center; justify-content: center"><div style="width: 200px; height: 200px; border-radius: 8px; background: #D9D9D4"></div></div>
+<div class="sk" style="height: 64px; border-radius: 12px"></div>
+</div>
+<div class="ft">
+<div class="sk" style="height: 52px; border-radius: 12px"></div>
+</div>
+<nav class="tabs" aria-label="Trang kèo">
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span>Kèo</a>
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg></span>Chi tiêu</a>
+<a class="tab on" href="#" aria-current="page"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 14h3v3M21 14v7h-7"></path></svg></span>Trả tiền</a>
+</nav>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S10 · Lỗi (lưu "đã chuyển" thất bại)</div>
+<div class="ph">
+<div class="bar"><b>Vũng Tàu 2N1Đ</b><span class="mu">Trả tiền · Tuấn cần chuyển <span class="mn">270.000 ₫</span> · 2 lần</span></div>
+<div class="bd">
+<div class="ban" role="alert">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.5v.5"></path></svg>
+<span>Chưa lưu được "Đã chuyển" vì mất mạng. Tiền bạn chuyển qua ngân hàng vẫn ổn, không sao đâu.</span>
+</div>
+<div class="debt">
+<div class="row"><b>1/2 · Gửi Hùng</b><span class="bdg">Chưa lưu</span></div>
+<span class="big">190.000 ₫</span>
+<span>MB Bank · 0000 1111 2222<br><b>NGUYEN VAN HUNG</b></span>
+</div>
+<div class="mini"><span><b>2/2 · Gửi Linh</b><br><span class="mn">80.000 ₫</span></span><span class="bdg">Chưa chuyển</span></div>
+</div>
+<div class="ft">
+<button class="btn">Thử lại</button>
+</div>
+<nav class="tabs" aria-label="Trang kèo">
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg></span>Kèo</a>
+<a class="tab" href="#"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><path d="M9 8h6M9 12h6"></path></svg></span>Chi tiêu</a>
+<a class="tab on" href="#" aria-current="page"><span class="ti"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M14 14h3v3M21 14v7h-7"></path></svg></span>Trả tiền</a>
+</nav>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1760,"height":968}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

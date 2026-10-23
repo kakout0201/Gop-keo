@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S9 Tài khoản nhận tiền</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#A8380A}
+.app{width:390px;height:844px;box-sizing:border-box;background:#FFF7EE;font-family:'Nunito',system-ui,sans-serif;color:#2A1D14;display:flex;flex-direction:column;overflow:hidden;position:relative;font-size:17px;line-height:25px}
+.bar{flex:none;padding:14px 16px 8px;display:flex;align-items:flex-start;gap:6px}
+.tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.t{font-size:22px;line-height:28px;font-weight:800}
+.s{font-size:15px;line-height:20px;color:#6B5546}
+.back{width:44px;height:44px;margin:-8px -4px 0 -12px;display:inline-flex;align-items:center;justify-content:center;color:#2A1D14;border-radius:22px;flex:none}
+.demo{flex:none;padding:3px 10px;border-radius:999px;border:1px dashed #C9AE97;font-size:13px;line-height:18px;color:#6B5546;text-decoration:none;white-space:nowrap;margin-top:4px}
+.bd{flex:1;padding:4px 16px 8px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.cap{font-size:15px;line-height:20px;color:#6B5546}
+.ft{flex:none;padding:8px 16px 14px;display:flex;flex-direction:column;gap:6px}
+.btn{height:56px;border-radius:999px;background:#C2410C;color:#FFFFFF;font:inherit;font-size:18px;font-weight:800;border:0;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.info{background:#FFFFFF;border:2px solid #F2B99A;border-radius:16px;padding:10px 14px}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl label{font-size:15px;line-height:20px;font-weight:800}
+.in{height:52px;border:1.5px solid #C9AE97;border-radius:14px;padding:0 14px;font:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#2A1D14;font-variant-numeric:tabular-nums}
+.sel{height:52px;border:1.5px solid #C9AE97;border-radius:14px;padding:0 12px;font:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#2A1D14;display:flex;align-items:center;gap:10px}
+.logo{width:32px;height:32px;border-radius:8px;background:#FBEADB;color:#5A4536;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.prev{background:#FFFFFF;border:1px solid #EBD9C8;border-radius:16px;padding:10px 14px;display:flex;align-items:center;gap:14px}
+.qr{width:84px;height:84px;box-sizing:border-box;padding:6px;border:1px solid #EBD9C8;border-radius:10px;background:#FFFFFF;flex:none}
+.mn{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+</style>
+</helmet>
+<div class="app">
+<div class="bar"><a class="back" href="P15-s11-hung.dc.html" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a><div class="tt"><span class="t">Tài khoản nhận tiền</span><span class="s">Vũng Tàu 2N1Đ</span></div><a class="demo" href="P00-demo.dc.html">Đổi vai</a></div>
+<div class="bd">
+<div class="info">Bạn được nhận <span class="mn">1.930.000 ₫</span>. Nhập tài khoản để mọi người quét mã QR chuyển cho bạn.</div>
+<div class="fl"><label for="p17-nh">Ngân hàng</label><button class="sel" id="p17-nh"><span class="logo" aria-hidden="true">MB</span><span style="flex: 1; text-align: left">MB Bank</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="fl"><label for="p17-stk">Số tài khoản</label><input class="in" id="p17-stk" inputmode="numeric" value="0000 1111 2222"></div>
+<div class="fl"><label for="p17-ten">Tên chủ tài khoản</label><input class="in" id="p17-ten" value="NGUYEN VAN HUNG"><span class="cap">Gõ có dấu cũng được. App tự đổi sang chữ in hoa không dấu cho khớp mã QR.</span></div>
+<div class="prev">
+<svg class="qr" viewBox="0 0 21 21" shape-rendering="crispEdges" role="img" aria-label="Mã QR minh họa"><path fill="#1A1A1A" fill-rule="evenodd" d="M0 0h7v7H0z M1 1v5h5V1z M2 2h3v3H2z M14 0h7v7h-7z M15 1v5h5V1z M16 2h3v3h-3z M0 14h7v7H0z M1 15v5h5v-5z M2 16h3v3H2z M8 0h1v1h-1z M10 0h1v1h-1z M9 1h1v1h-1z M11 1h1v1h-1z M8 2h1v1h-1z M12 2h1v1h-1z M10 3h1v1h-1z M9 4h1v1h-1z M11 4h1v1h-1z M8 5h1v1h-1z M12 6h1v1h-1z M10 6h1v1h-1z M0 8h1v1h-1z M2 8h1v1h-1z M5 8h1v1h-1z M7 9h1v1h-1z M1 10h1v1h-1z M4 10h1v1h-1z M6 11h1v1h-1z M3 12h1v1h-1z M0 12h1v1h-1z M8 8h1v1h-1z M9 9h1v1h-1z M11 8h1v1h-1z M13 9h1v1h-1z M15 8h1v1h-1z M17 8h1v1h-1z M19 9h1v1h-1z M20 8h1v1h-1z M14 10h1v1h-1z M16 11h1v1h-1z M18 10h1v1h-1z M20 12h1v1h-1z M12 11h1v1h-1z M10 10h1v1h-1z M8 12h1v1h-1z M9 13h1v1h-1z M8 14h1v1h-1z M10 15h1v1h-1z M12 14h1v1h-1z M11 16h1v1h-1z M9 17h1v1h-1z M13 18h1v1h-1z M8 19h1v1h-1z M10 20h1v1h-1z M12 19h1v1h-1z M14 14h1v1h-1z M16 14h1v1h-1z M15 15h1v1h-1z M18 15h1v1h-1z M20 14h1v1h-1z M17 17h1v1h-1z M19 16h1v1h-1z M14 18h1v1h-1z M16 19h1v1h-1z M18 20h1v1h-1z M20 18h1v1h-1z M15 20h1v1h-1z"></path></svg>
+<span class="cap">Mọi người sẽ thấy mã như thế này, đã điền sẵn số tiền từng người cần chuyển.</span>
+</div>
+<span class="cap">Ai mở link kèo này đều thấy số tài khoản của bạn.</span>
+</div>
+<div class="ft">
+<a class="btn" href="P15-s11-hung.dc.html">Lưu tài khoản</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

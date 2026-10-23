@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Danh sách màn hình</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#3A3A38}a:hover{color:#1F1F1E}
+</style>
+</helmet>
+<div style="width: 1280px; height: 1400px; box-sizing: border-box; padding: 56px 64px; background: #FAFAF8; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #1F1F1E; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-size: 28px; line-height: 36px">Danh sách màn hình S1–S11</h1>
+<p style="margin: 0; font-size: 16px; line-height: 24px; color: #4F4F4B">Trang kèo là trung tâm, có thanh tab cố định dưới cùng: <b>Kèo</b> (S3 trước khi chốt, S6 sau khi chốt) · <b>Chi tiêu</b> (S8) · <b>Trả tiền</b> (S10 nếu mình nợ, S11 nếu mình được nợ). Chấm đỏ trên tab = còn việc phải làm. S1, S2, S5, S7, S9 là màn đẩy lên (có nút quay lại, không có tab). S4 là bottom sheet.</p>
+</div>
+<div style="display: grid; grid-template-columns: 72px 240px minmax(0, 1fr) 200px 260px; border: 1px solid #D4D4CF; border-radius: 12px; overflow: hidden; background: #FFFFFF; font-size: 16px; line-height: 24px">
+<div style="padding: 12px; background: #EDEDEA; font-weight: 700">Mã</div>
+<div style="padding: 12px; background: #EDEDEA; font-weight: 700">Màn hình</div>
+<div style="padding: 12px; background: #EDEDEA; font-weight: 700">Mục đích</div>
+<div style="padding: 12px; background: #EDEDEA; font-weight: 700">Vai</div>
+<div style="padding: 12px; background: #EDEDEA; font-weight: 700">Nút chính</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S1</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tạo kèo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Đặt tên kèo, đề xuất vài ngày và vài chỗ.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người tạo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tạo kèo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S2</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Chia sẻ link</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Gửi link kèm tin mời soạn sẵn vào nhóm Zalo.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người tạo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Gửi vào Zalo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S3</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tab Kèo – đang vote</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Mở link là thấy kèo; chạm để vote (lưu ngay); lựa chọn theo thứ tự thời gian, nhãn "Đang dẫn", avatar người đã vote.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Mọi người (cả người tạo)</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người tham gia: không có nút đặc. Người tạo: Chốt kèo.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S4</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Bạn là ai? (sheet)</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Lần đầu thao tác: chạm tên mình hoặc gõ tên mới. Không mật khẩu.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người mới vào</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Vào kèo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S5</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Chốt kèo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Chọn ngày + chỗ (mặc định phương án nhiều phiếu nhất) rồi chốt.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người tạo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Chốt kèo</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S6</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tab Kèo – đã chốt</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Thẻ tóm tắt ghim đầu; số mình nợ hoặc được nhận; tóm tắt chi tiêu và tiến độ.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Mọi người</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Trả … ₫ cho … (người nợ) / Xem mình nợ bao nhiêu (chưa chọn tên) / Thêm khoản chi (chưa có khoản)</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S7</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Thêm/sửa khoản chi</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Số tiền, ai trả, chia cho ai (mặc định cả nhóm, bỏ chọn 1 chạm).</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người ứng tiền</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Lưu khoản chi</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S8</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tab Chi tiêu</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Mọi khoản: ai trả, chia cho ai, mỗi người bao nhiêu; số dư từng người.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Mọi người</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Thêm khoản chi</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S9</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tài khoản nhận tiền</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người được nợ nhập ngân hàng, số tài khoản, tên chủ tài khoản để tạo VietQR.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người được nợ</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Lưu tài khoản</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S10</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tab Trả tiền – mình nợ</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Mỗi lần chuyển một thẻ: QR có sẵn số tiền, copy số tài khoản, đánh dấu đã chuyển.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người nợ</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tôi đã chuyển cho …</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0; font-weight: 700">S11</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Tab Trả tiền – được nợ</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Ai đã trả mình, ai chưa; tiến độ cả nhóm; copy tin nhắc soạn sẵn để dán vào Zalo.</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Người được nợ (cả nhóm xem tiến độ)</div>
+<div style="padding: 12px; border-top: 1px solid #E4E4E0">Copy tin nhắc người chưa trả</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+<div style="background: #FFFFFF; border: 1px solid #D4D4CF; border-radius: 12px; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 24px">
+<h2 style="margin: 0; font-size: 20px; line-height: 28px">Vote — người mới mở link từ Zalo: 3 chạm</h2>
+<ol style="margin: 0; padding-left: 24px">
+<li>Chạm 1 ngày ở S3 → mở S4 "Bạn là ai?"</li>
+<li>Chạm tên mình → vote ngày được lưu, sheet đóng</li>
+<li>Chạm 1 chỗ → lưu ngay</li>
+</ol>
+<p style="margin: 0; color: #4F4F4B">Người đã vào trước: 2 chạm. Tên chưa có trong nhóm: gõ tên + "Vào kèo" thay cho bước 2.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #D4D4CF; border-radius: 12px; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; line-height: 24px">
+<h2 style="margin: 0; font-size: 20px; line-height: 28px">Xem mình nợ + mở QR — người mới: 2 chạm</h2>
+<ol style="margin: 0; padding-left: 24px">
+<li>Chạm "Xem mình nợ bao nhiêu" ở S6 (hoặc tab Trả tiền) → mở S4</li>
+<li>Chạm tên mình → S10 hiện QR ngay</li>
+<li>(Sau khi quét ở app ngân hàng) chạm "Tôi đã chuyển cho Hùng"</li>
+</ol>
+<p style="margin: 0; color: #4F4F4B">Người đã vào trước: nút chính ở S6 ghi sẵn "Trả 870.000 ₫ cho Hùng" → 1 chạm tới QR.</p>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1400}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

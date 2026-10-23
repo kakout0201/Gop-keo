@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S1 Tạo kèo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#A8380A}
+.app{width:390px;height:844px;box-sizing:border-box;background:#FFF7EE;font-family:'Nunito',system-ui,sans-serif;color:#2A1D14;display:flex;flex-direction:column;overflow:hidden;position:relative;font-size:17px;line-height:25px}
+.bar{flex:none;padding:14px 16px 8px;display:flex;align-items:flex-start;gap:6px}
+.tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.t{font-size:22px;line-height:28px;font-weight:800}
+.s{font-size:15px;line-height:20px;color:#6B5546}
+.demo{flex:none;padding:3px 10px;border-radius:999px;border:1px dashed #C9AE97;font-size:13px;line-height:18px;color:#6B5546;text-decoration:none;white-space:nowrap;margin-top:4px}
+.bd{flex:1;padding:4px 16px 8px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.mu{color:#6B5546}
+.ft{flex:none;padding:10px 16px 14px;display:flex;flex-direction:column;gap:6px}
+.btn{height:56px;border-radius:999px;background:#C2410C;color:#FFFFFF;font:inherit;font-size:18px;font-weight:800;border:0;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl label{font-size:15px;line-height:20px;font-weight:800}
+.in{height:48px;border:1.5px solid #C9AE97;border-radius:14px;padding:0 14px;font:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#2A1D14}
+.cal{background:#FFFFFF;border:1px solid #EBD9C8;border-radius:18px;padding:4px 6px 8px;display:flex;flex-direction:column}
+.calh{display:flex;align-items:center;justify-content:space-between;font-weight:800}
+.ic{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;color:#2A1D14;border-radius:22px}
+.grid{display:grid;grid-template-columns:repeat(7, minmax(0, 1fr));gap:2px;text-align:center}
+.wd{font-size:14px;line-height:22px;color:#6B5546;font-weight:700}
+.d{height:40px;border:0;background:none;font:inherit;font-weight:600;border-radius:20px;color:#2A1D14;padding:0}
+.d.on{background:#C2410C;color:#FFFFFF;font-weight:800}
+.pick{min-height:48px;border:1.5px dashed #C9AE97;border-radius:16px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#FFFFFF;font:inherit;color:#2A1D14;width:100%;box-sizing:border-box;text-align:left}
+</style>
+</helmet>
+<div class="app">
+<div class="bar"><div class="tt"><span class="t">Rủ cả nhóm đi chơi nè!</span><span class="s">Không cần đăng ký. Tạo xong gửi link vào Zalo.</span></div><a class="demo" href="P00-demo.dc.html">Đổi vai</a></div>
+<div class="bd">
+<div class="fl"><label for="p1-ten">Tên kèo</label><input class="in" id="p1-ten" value="Vũng Tàu 2N1Đ"></div>
+<div class="fl"><label for="p1-ban">Tên của bạn</label><input class="in" id="p1-ban" value="Hùng"></div>
+<div class="fl"><label>Ngày đề xuất · chạm để chọn, chọn nhiều cũng được</label></div>
+<div class="cal">
+<div class="calh"><button class="ic" aria-label="Tháng trước"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span>Tháng 11/2026</span><button class="ic" aria-label="Tháng sau"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+<div class="grid">
+<span class="wd">T2</span><span class="wd">T3</span><span class="wd">T4</span><span class="wd">T5</span><span class="wd">T6</span><span class="wd">T7</span><span class="wd">CN</span>
+<span></span><span></span><span></span><span></span><span></span><span></span><button class="d">1</button>
+<button class="d">2</button><button class="d">3</button><button class="d">4</button><button class="d">5</button><button class="d">6</button><button class="d">7</button><button class="d">8</button>
+<button class="d">9</button><button class="d">10</button><button class="d">11</button><button class="d">12</button><button class="d">13</button><button class="d on" aria-pressed="true">14</button><button class="d on" aria-pressed="true">15</button>
+<button class="d">16</button><button class="d">17</button><button class="d">18</button><button class="d">19</button><button class="d">20</button><button class="d on" aria-pressed="true">21</button><button class="d on" aria-pressed="true">22</button>
+<button class="d">23</button><button class="d">24</button><button class="d">25</button><button class="d">26</button><button class="d">27</button><button class="d on" aria-pressed="true">28</button><button class="d on" aria-pressed="true">29</button>
+<button class="d">30</button><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+<span>Đã chọn: <b>14–15, 21–22, 28–29/11</b></span>
+<button class="pick"><span><b>Chỗ đề xuất:</b> 2 chỗ</span><span style="font-weight: 800; color: #A8380A">Sửa</span></button>
+</div>
+<div class="ft">
+<a class="btn" href="P02-s2-chia-se.dc.html">Tạo kèo</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

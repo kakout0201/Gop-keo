@@ -1,0 +1,546 @@
+{
+ "v": 3,
+ "attachments": {},
+ "boards": {
+  "Main.dc.html": {
+   "h": 1760,
+   "page": "flow",
+   "title": "User flow",
+   "w": 1440,
+   "x": 0,
+   "y": 0
+  },
+  "Screens.dc.html": {
+   "h": 1400,
+   "page": "flow",
+   "title": "Danh sách màn hình S1–S11",
+   "w": 1280,
+   "x": 1520,
+   "y": 0
+  },
+  "S01-tao-keo.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S1 · Tạo kèo",
+   "w": 1760,
+   "x": 0,
+   "y": 0
+  },
+  "S02-chia-se.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S2 · Chia sẻ link",
+   "w": 1760,
+   "x": 2270,
+   "y": 0
+  },
+  "S03-vote.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S3 · Tab Kèo – đang vote",
+   "w": 2190,
+   "x": 0,
+   "y": 1088
+  },
+  "S04-ban-la-ai.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S4 · Bạn là ai?",
+   "w": 1760,
+   "x": 2270,
+   "y": 1088
+  },
+  "S05-chot-keo.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S5 · Chốt kèo",
+   "w": 1760,
+   "x": 0,
+   "y": 2176
+  },
+  "S06-keo-da-chot.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S6 · Tab Kèo – đã chốt",
+   "w": 2190,
+   "x": 2270,
+   "y": 2176
+  },
+  "S07-khoan-chi.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S7 · Thêm/sửa khoản chi",
+   "w": 1760,
+   "x": 0,
+   "y": 3264
+  },
+  "S08-bang-chi-tieu.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S8 · Tab Chi tiêu",
+   "w": 1760,
+   "x": 2270,
+   "y": 3264
+  },
+  "S09-tai-khoan.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S9 · Tài khoản nhận tiền",
+   "w": 1760,
+   "x": 0,
+   "y": 4352
+  },
+  "S10-minh-no-ai.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S10 · Tab Trả tiền – mình nợ",
+   "w": 1760,
+   "x": 2270,
+   "y": 4352
+  },
+  "S11-tien-do.dc.html": {
+   "h": 968,
+   "page": "wf",
+   "title": "S11 · Tab Trả tiền – được nợ",
+   "w": 1760,
+   "x": 0,
+   "y": 5440
+  },
+  "dA-man.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "A · S3 + S10",
+   "w": 900,
+   "x": 0,
+   "y": 0
+  },
+  "dA-tokens.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "A · Design tokens",
+   "w": 760,
+   "x": 980,
+   "y": 0
+  },
+  "dA-comp.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "A · Components",
+   "w": 1100,
+   "x": 1820,
+   "y": 0
+  },
+  "dB-man.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "B · S3 + S10",
+   "w": 900,
+   "x": 0,
+   "y": 1368
+  },
+  "dB-tokens.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "B · Design tokens",
+   "w": 760,
+   "x": 980,
+   "y": 1368
+  },
+  "dB-comp.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "B · Components",
+   "w": 1100,
+   "x": 1820,
+   "y": 1368
+  },
+  "dC-man.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "C · S3 + S10",
+   "w": 900,
+   "x": 0,
+   "y": 2736
+  },
+  "dC-tokens.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "C · Design tokens",
+   "w": 760,
+   "x": 980,
+   "y": 2736
+  },
+  "dC-comp.dc.html": {
+   "h": 968,
+   "page": "dir",
+   "title": "C · Components",
+   "w": 1100,
+   "x": 1820,
+   "y": 2736
+  },
+  "proto/P00-demo.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "Demo · chọn việc để thử",
+   "w": 390,
+   "x": 0,
+   "y": 0,
+   "is_interactive": true
+  },
+  "proto/P01-s1-tao-keo.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S1 · Hùng tạo kèo",
+   "w": 390,
+   "x": 470,
+   "y": 0,
+   "is_interactive": true
+  },
+  "proto/P02-s2-chia-se.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S2 · Chia sẻ link",
+   "w": 390,
+   "x": 940,
+   "y": 0,
+   "is_interactive": true
+  },
+  "proto/P03-s3-tuan-moi.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S3 · Tuấn mở link lần đầu",
+   "w": 390,
+   "x": 1410,
+   "y": 0,
+   "is_interactive": true
+  },
+  "proto/P04-s4-ban-la-ai.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S4 · Tuấn nhập tên",
+   "w": 390,
+   "x": 1880,
+   "y": 0,
+   "is_interactive": true
+  },
+  "proto/P05-s3-tuan-da-vote.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S3 · Tuấn đã vote",
+   "w": 390,
+   "x": 0,
+   "y": 964,
+   "is_interactive": true
+  },
+  "proto/P06-s3-hung.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S3 · Hùng (người tạo)",
+   "w": 390,
+   "x": 470,
+   "y": 964,
+   "is_interactive": true
+  },
+  "proto/P07-s5-chot.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S5 · Chốt kèo",
+   "w": 390,
+   "x": 940,
+   "y": 964,
+   "is_interactive": true
+  },
+  "proto/P08-s6-hung.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S6 · Hùng, chưa có chi tiêu",
+   "w": 390,
+   "x": 1410,
+   "y": 964,
+   "is_interactive": true
+  },
+  "proto/P09-s7-them-chi.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S7 · Ghi khoản Bia",
+   "w": 390,
+   "x": 1880,
+   "y": 964,
+   "is_interactive": true
+  },
+  "proto/P10-s8-hung.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S8 · Chi tiêu (Hùng)",
+   "w": 390,
+   "x": 0,
+   "y": 1928,
+   "is_interactive": true
+  },
+  "proto/P11-s8-mai-sua.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S8 · Mai, sau khi sửa khoản Bia",
+   "w": 390,
+   "x": 470,
+   "y": 1928,
+   "is_interactive": true
+  },
+  "proto/P12-s6-khoa.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S6 · Khoa còn nợ",
+   "w": 390,
+   "x": 940,
+   "y": 1928,
+   "is_interactive": true
+  },
+  "proto/P13-s10-khoa.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S10 · Khoa trả bằng QR",
+   "w": 390,
+   "x": 1410,
+   "y": 1928,
+   "is_interactive": true
+  },
+  "proto/P14-s10-da-chuyen.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S10 · Khoa đã chuyển",
+   "w": 390,
+   "x": 1880,
+   "y": 1928,
+   "is_interactive": true
+  },
+  "proto/P15-s11-hung.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S11 · Hùng xem ai chưa trả",
+   "w": 390,
+   "x": 0,
+   "y": 2892,
+   "is_interactive": true
+  },
+  "proto/P16-s11-da-copy.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S11 · Đã copy tin nhắc",
+   "w": 390,
+   "x": 470,
+   "y": 2892,
+   "is_interactive": true
+  },
+  "proto/P17-s9-tai-khoan.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S9 · Tài khoản nhận tiền",
+   "w": 390,
+   "x": 940,
+   "y": 2892,
+   "is_interactive": true
+  },
+  "proto/P18-s6-nguoi-moi.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S6 · Người mới mở link",
+   "w": 390,
+   "x": 1410,
+   "y": 2892,
+   "is_interactive": true
+  },
+  "proto/P19-s4-chon-ten.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S4 · Chọn tên để xem nợ",
+   "w": 390,
+   "x": 1880,
+   "y": 2892,
+   "is_interactive": true
+  },
+  "proto/P20-s11-xem-tin.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S11 · Xem trước tin nhắc (cả nhóm)",
+   "w": 390,
+   "x": 0,
+   "y": 3856,
+   "is_interactive": true
+  },
+  "proto/P21-s11-nhan-rieng.dc.html": {
+   "h": 844,
+   "page": "proto",
+   "title": "S11 · Nhắn riêng từng người",
+   "w": 390,
+   "x": 470,
+   "y": 3856,
+   "is_interactive": true
+  }
+ },
+ "createdOnFiles": {
+  "at": "2026-10-23T15:30:00Z",
+  "v": 1
+ },
+ "designSystems": [],
+ "launch": {
+  "page": "proto",
+  "view": "canvas"
+ },
+ "notes": {
+  "flowTitle": {
+   "kind": "title1",
+   "maxW": 2800,
+   "page": "flow",
+   "text": "Góp Kèo · User flow & danh sách màn hình",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "wfTitle": {
+   "kind": "title1",
+   "maxW": 4460,
+   "page": "wf",
+   "text": "Wireframe 390px · Bình thường / Trống / Đang tải / Lỗi",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "dirA": {
+   "kind": "title1",
+   "maxW": 2920,
+   "page": "dir",
+   "text": "Hướng A · Rủ rê (ấm áp, vui vẻ)",
+   "x": 0,
+   "y": -300
+  },
+  "dirB": {
+   "kind": "title1",
+   "maxW": 2920,
+   "page": "dir",
+   "text": "Hướng B · Sổ minh bạch (gọn, tin cậy)",
+   "x": 0,
+   "y": 1068
+  },
+  "dirC": {
+   "kind": "title1",
+   "maxW": 2920,
+   "page": "dir",
+   "text": "Hướng C · To, rõ, một tay (ưu tiên người lớn tuổi)",
+   "x": 0,
+   "y": 2436
+  },
+  "dirAwhy": {
+   "page": "dir",
+   "x": 3000,
+   "y": 0,
+   "w": 420,
+   "fill": "orange",
+   "text": "Vì sao hợp: kèo đi chơi là chuyện vui, nên giao diện ấm, nút bo tròn, lời lẽ kiểu bạn bè (\"nè\", \"nha\"). Màu cam đất là màu nhấn duy nhất.\n\nRủi ro: không khí \"vui\" có thể làm phần tiền bạc kém nghiêm túc với người như Mai. Đã kiểm: chữ số Nunito đều độ rộng."
+  },
+  "dirBwhy": {
+   "page": "dir",
+   "x": 3000,
+   "y": 1368,
+   "w": 420,
+   "fill": "blue",
+   "text": "Vì sao hợp: nỗi đau lớn nhất là đòi tiền và tính lại khi sai, nên giao diện gọn như sổ sách, số tiền canh phải, đường kẻ rõ. Xanh dương đậm là màu nhấn duy nhất.\n\nRủi ro: dễ khô, giống app ngân hàng hơn app rủ đi chơi; Tuấn có thể thấy \"nặng\"."
+  },
+  "dirCwhy": {
+   "page": "dir",
+   "x": 3000,
+   "y": 2736,
+   "w": 420,
+   "fill": "green",
+   "text": "Vì sao hợp: thiết kế cho người khó nhất (mẹ 54 tuổi, Android cũ): chữ thân 19px, nút cao 60px, viền đậm, QR 240px. Xanh lá đậm là màu nhấn duy nhất.\n\nRủi ro: mỗi màn chứa được ít nội dung hơn, phải cuộn nhiều hơn (S3 dài hơn khung); người trẻ có thể thấy \"to quá\"."
+  },
+  "protoTitle": {
+   "kind": "title1",
+   "maxW": 2300,
+   "page": "proto",
+   "text": "Prototype · Hướng A + chi tiết B, C · bấm Play ở khung Demo",
+   "x": 0,
+   "y": -300
+  },
+  "dirPick": {
+   "page": "dir",
+   "x": 3000,
+   "y": -300,
+   "w": 420,
+   "fill": "yellow",
+   "text": "ĐÃ CHỌN: A làm nền + bố cục S10 và nút ghi số tiền từ B + nhãn ★ Đang dẫn riêng dòng, 3 bước dưới QR, nút 56px, QR 232px từ C. Lý do: docs/design/decisions.md"
+  },
+  "protoDemo": {
+   "page": "proto",
+   "x": 2350,
+   "y": 0,
+   "w": 360,
+   "fill": "gray",
+   "text": "Nút \"Đổi vai\" và màn Demo chỉ có trong prototype để chuyển vai khi test. Không đưa vào spec (E8)."
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "Screens.dc.html",
+  "S01-tao-keo.dc.html",
+  "S02-chia-se.dc.html",
+  "S03-vote.dc.html",
+  "S04-ban-la-ai.dc.html",
+  "S05-chot-keo.dc.html",
+  "S06-keo-da-chot.dc.html",
+  "S07-khoan-chi.dc.html",
+  "S08-bang-chi-tieu.dc.html",
+  "S09-tai-khoan.dc.html",
+  "S10-minh-no-ai.dc.html",
+  "S11-tien-do.dc.html",
+  "dA-man.dc.html",
+  "dA-tokens.dc.html",
+  "dA-comp.dc.html",
+  "dB-man.dc.html",
+  "dB-tokens.dc.html",
+  "dB-comp.dc.html",
+  "dC-man.dc.html",
+  "dC-tokens.dc.html",
+  "dC-comp.dc.html",
+  "proto/P00-demo.dc.html",
+  "proto/P01-s1-tao-keo.dc.html",
+  "proto/P02-s2-chia-se.dc.html",
+  "proto/P03-s3-tuan-moi.dc.html",
+  "proto/P04-s4-ban-la-ai.dc.html",
+  "proto/P05-s3-tuan-da-vote.dc.html",
+  "proto/P06-s3-hung.dc.html",
+  "proto/P07-s5-chot.dc.html",
+  "proto/P08-s6-hung.dc.html",
+  "proto/P09-s7-them-chi.dc.html",
+  "proto/P10-s8-hung.dc.html",
+  "proto/P11-s8-mai-sua.dc.html",
+  "proto/P12-s6-khoa.dc.html",
+  "proto/P13-s10-khoa.dc.html",
+  "proto/P14-s10-da-chuyen.dc.html",
+  "proto/P15-s11-hung.dc.html",
+  "proto/P16-s11-da-copy.dc.html",
+  "proto/P17-s9-tai-khoan.dc.html",
+  "proto/P18-s6-nguoi-moi.dc.html",
+  "proto/P19-s4-chon-ten.dc.html",
+  "proto/P20-s11-xem-tin.dc.html",
+  "proto/P21-s11-nhan-rieng.dc.html"
+ ],
+ "pages": [
+  {
+   "id": "flow",
+   "name": "Flow & màn hình"
+  },
+  {
+   "id": "wf",
+   "name": "Wireframe"
+  },
+  {
+   "id": "dir",
+   "name": "Bước 4 · 3 hướng"
+  },
+  {
+   "id": "proto",
+   "name": "Bước 5 · Prototype"
+  }
+ ],
+ "title": "Góp Kèo"
+}

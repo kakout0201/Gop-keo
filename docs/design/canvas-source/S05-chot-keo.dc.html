@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S5 Chốt kèo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2B2B2A}a:hover{color:#000000}
+.col{display:flex;flex-direction:column;gap:12px;width:390px}
+.st{font-size:16px;line-height:20px;font-weight:700;color:#4F4F4B}
+.ph{width:390px;height:844px;box-sizing:border-box;border:1px solid #BDBDB8;border-radius:24px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.bar{height:56px;flex:none;display:flex;align-items:center;gap:4px;padding:0 12px 0 4px;border-bottom:1px solid #E4E4E0;font-size:18px;font-weight:700}
+.ic{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;color:#2B2B2A}
+.bd{flex:1;padding:16px;display:flex;flex-direction:column;gap:10px;overflow:hidden;font-size:16px;line-height:24px}
+.ft{flex:none;padding:12px 16px 20px;border-top:1px solid #E4E4E0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:24px}
+.btn{height:52px;border-radius:12px;background:#2B2B2A;color:#FFFFFF;font-size:17px;font-weight:700;border:0;width:100%;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn.off{background:#C9C9C4;color:#3F3F3B}
+.btn2{min-height:44px;border-radius:12px;background:#FFFFFF;color:#2B2B2A;border:1px solid #8F8F8A;font-size:16px;font-weight:600;width:100%;font-family:inherit;padding:0 14px}
+.mu{color:#55554F}
+.h2{font-size:17px;line-height:24px;font-weight:700;margin:6px 0 0}
+.ro{min-height:56px;border:1px solid #8F8F8A;border-radius:12px;padding:8px 14px;display:flex;align-items:center;gap:12px;box-sizing:border-box}
+.ro.on{border:2px solid #2B2B2A;background:#F3F3F0}
+.ro input{width:22px;height:22px;margin:0;accent-color:#2B2B2A;flex:none}
+.ro .t{flex:1}
+.info{border:1px solid #8F8F8A;background:#F3F3F0;border-radius:12px;padding:12px 14px}
+.ban{border:1px solid #8A3B26;background:#F6EFEC;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;color:#5A2516}
+.sum{text-align:center;font-weight:600}
+.dim{opacity:0.45}
+</style>
+</helmet>
+<div style="width: 1760px; height: 968px; box-sizing: border-box; padding: 40px; background: #FAFAF8; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #1F1F1E; display: flex; gap: 40px">
+
+<div class="col">
+<div class="st">S5 · Bình thường (Hùng)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Chốt kèo</div>
+<div class="bd">
+<div class="info">6/7 người đã vote · Khoa chưa vote</div>
+<h2 class="h2">Ngày</h2>
+<label class="ro on"><input type="radio" name="s5a-d" checked=""><span class="t"><b>T7–CN 21–22/11</b><br><span class="mu">nhiều phiếu nhất</span></span><span>6 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5a-d"><span class="t">T7–CN 14–15/11</span><span>2 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5a-d"><span class="t">T7–CN 28–29/11</span><span>1 phiếu</span></label>
+<h2 class="h2">Chỗ</h2>
+<label class="ro on"><input type="radio" name="s5a-c" checked=""><span class="t"><b>Homestay Biển Xanh</b><br><span class="mu">2.800.000 ₫/đêm</span></span><span>5 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5a-c"><span class="t">Villa Bãi Sau<br><span class="mu">3.500.000 ₫/đêm</span></span><span>2 phiếu</span></label>
+<span class="mu">Sau khi chốt, thẻ tóm tắt ghim ở đầu trang kèo cho mọi người. Vote đóng lại.</span>
+</div>
+<div class="ft">
+<div class="sum">21–22/11 · Homestay Biển Xanh</div>
+<button class="btn">Chốt kèo</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S5 · Trống (chưa ai vote)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Chốt kèo</div>
+<div class="bd">
+<div class="info">Chưa ai vote. Bạn có thể chờ thêm, nhắc nhóm, hoặc tự chọn để chốt.</div>
+<h2 class="h2">Ngày</h2>
+<label class="ro"><input type="radio" name="s5b-d"><span class="t">T7–CN 14–15/11</span><span>0 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5b-d"><span class="t">T7–CN 21–22/11</span><span>0 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5b-d"><span class="t">T7–CN 28–29/11</span><span>0 phiếu</span></label>
+<h2 class="h2">Chỗ</h2>
+<label class="ro"><input type="radio" name="s5b-c"><span class="t">Homestay Biển Xanh<br><span class="mu">2.800.000 ₫/đêm</span></span><span>0 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5b-c"><span class="t">Villa Bãi Sau<br><span class="mu">3.500.000 ₫/đêm</span></span><span>0 phiếu</span></label>
+</div>
+<div class="ft">
+<button class="btn2">Copy tin nhắc mọi người vote</button>
+<button class="btn off" disabled="">Chốt kèo</button>
+<span class="mu" style="text-align: center">Chọn 1 ngày để chốt</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S5 · Đang tải (đang chốt)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Chốt kèo</div>
+<div class="bd dim">
+<div class="info">6/7 người đã vote · Khoa chưa vote</div>
+<h2 class="h2">Ngày</h2>
+<label class="ro on"><input type="radio" name="s5c-d" checked="" disabled=""><span class="t"><b>T7–CN 21–22/11</b></span><span>6 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5c-d" disabled=""><span class="t">T7–CN 14–15/11</span><span>2 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5c-d" disabled=""><span class="t">T7–CN 28–29/11</span><span>1 phiếu</span></label>
+<h2 class="h2">Chỗ</h2>
+<label class="ro on"><input type="radio" name="s5c-c" checked="" disabled=""><span class="t"><b>Homestay Biển Xanh</b></span><span>5 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5c-c" disabled=""><span class="t">Villa Bãi Sau</span><span>2 phiếu</span></label>
+</div>
+<div class="ft">
+<div class="sum">21–22/11 · Homestay Biển Xanh</div>
+<button class="btn" disabled=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Đang chốt…</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S5 · Lỗi (mất mạng khi chốt)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Chốt kèo</div>
+<div class="bd">
+<div class="ban" role="alert">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.5v.5"></path></svg>
+<span>Chưa chốt được vì mất mạng. Lựa chọn của bạn vẫn còn.</span>
+</div>
+<h2 class="h2">Ngày</h2>
+<label class="ro on"><input type="radio" name="s5d-d" checked=""><span class="t"><b>T7–CN 21–22/11</b></span><span>6 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5d-d"><span class="t">T7–CN 14–15/11</span><span>2 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5d-d"><span class="t">T7–CN 28–29/11</span><span>1 phiếu</span></label>
+<h2 class="h2">Chỗ</h2>
+<label class="ro on"><input type="radio" name="s5d-c" checked=""><span class="t"><b>Homestay Biển Xanh</b></span><span>5 phiếu</span></label>
+<label class="ro"><input type="radio" name="s5d-c"><span class="t">Villa Bãi Sau</span><span>2 phiếu</span></label>
+</div>
+<div class="ft">
+<div class="sum">21–22/11 · Homestay Biển Xanh</div>
+<button class="btn">Thử lại</button>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1760,"height":968}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Hướng A tokens</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#A8380A}a:hover{color:#7C2906}
+.sec{display:flex;flex-direction:column;gap:10px}
+.sh{margin:0;font-size:15px;line-height:20px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#6B5546}
+.sw{display:flex;align-items:center;gap:12px;min-height:44px}
+.chip{width:44px;height:44px;box-sizing:border-box;border-radius:12px;border:1px solid #EBD9C8;flex:none}
+.nm{display:flex;flex-direction:column;font-size:15px;line-height:20px}
+.nm b{font-size:16px}
+.hex{color:#6B5546;font-variant-numeric:tabular-nums}
+.ty{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid #EBD9C8;padding-bottom:8px}
+.ty>span:first-child{white-space:nowrap}
+.ty .k{font-size:14px;line-height:18px;color:#6B5546;white-space:nowrap}
+.bar{height:14px;background:#C2410C;border-radius:4px}
+.sp{display:flex;align-items:center;gap:10px;font-size:15px;color:#6B5546;font-variant-numeric:tabular-nums}
+.av{width:36px;height:36px;border-radius:18px;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.avr{display:flex;flex-wrap:wrap;gap:10px 14px}
+.avi{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:14px;color:#6B5546}
+</style>
+</helmet>
+<div style="width: 760px; height: 968px; box-sizing: border-box; padding: 40px; background: #FFF7EE; font-family: 'Nunito', system-ui, sans-serif; color: #2A1D14; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-size: 28px; line-height: 34px; font-weight: 800">Hướng A · Rủ rê — Design tokens</h1>
+<p style="margin: 0; font-size: 16px; line-height: 22px; color: #6B5546">Một màu nhấn: cam đất. success / warning / danger chỉ dùng cho chữ và biểu tượng trạng thái nhỏ, không tô nền lớn.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div class="sec">
+<h2 class="sh">Màu</h2>
+<div class="sw"><span class="chip" style="background: #C2410C"></span><span class="nm"><b>primary</b><span class="hex">#C2410C · chữ trắng 5.2:1</span></span></div>
+<div class="sw"><span class="chip" style="background: #FFFFFF"></span><span class="nm"><b>on-primary</b><span class="hex">#FFFFFF</span></span></div>
+<div class="sw"><span class="chip" style="background: #FDE7D8"></span><span class="nm"><b>primary-soft</b><span class="hex">#FDE7D8 · nền ô đã chọn</span></span></div>
+<div class="sw"><span class="chip" style="background: #FFF7EE"></span><span class="nm"><b>background</b><span class="hex">#FFF7EE</span></span></div>
+<div class="sw"><span class="chip" style="background: #FFFFFF"></span><span class="nm"><b>surface</b><span class="hex">#FFFFFF</span></span></div>
+<div class="sw"><span class="chip" style="background: #FBEADB"></span><span class="nm"><b>surface-muted</b><span class="hex">#FBEADB · nhãn trạng thái</span></span></div>
+<div class="sw"><span class="chip" style="background: #2A1D14"></span><span class="nm"><b>text</b><span class="hex">#2A1D14</span></span></div>
+<div class="sw"><span class="chip" style="background: #6B5546"></span><span class="nm"><b>text-muted</b><span class="hex">#6B5546 · 6.6:1 trên nền</span></span></div>
+<div class="sw"><span class="chip" style="background: #EBD9C8"></span><span class="nm"><b>border</b><span class="hex">#EBD9C8</span></span></div>
+<div class="sw"><span style="display: flex; gap: 2px; flex: none"><span class="chip" style="width: 14px; border-radius: 6px; background: #2F7A3B"></span><span class="chip" style="width: 14px; border-radius: 6px; background: #8A5A00"></span><span class="chip" style="width: 14px; border-radius: 6px; background: #B42318"></span></span><span class="nm"><b>success · warning · danger</b><span class="hex">#2F7A3B · #8A5A00 · #B42318</span></span></div>
+</div>
+<div class="sec">
+<h2 class="sh">Avatar từng người (màu nhạt, chữ đậm)</h2>
+<div class="avr">
+<span class="avi"><span class="av" style="background: #FFE2C2; color: #7A3A00">H</span>Hùng</span>
+<span class="avi"><span class="av" style="background: #FAD4E4; color: #7D1D4A">L</span>Linh</span>
+<span class="avi"><span class="av" style="background: #D3E5FF; color: #123E7C">T</span>Tuấn</span>
+<span class="avi"><span class="av" style="background: #DDF2D3; color: #235A14">M</span>Mai</span>
+<span class="avi"><span class="av" style="background: #E8DAFF; color: #4A2382">Th</span>Thảo</span>
+<span class="avi"><span class="av" style="background: #FFF0B3; color: #6A5200">N</span>Nam</span>
+<span class="avi"><span class="av" style="background: #CFF0EC; color: #0E5650">K</span>Khoa</span>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px">
+<div class="sec">
+<h2 class="sh">Chữ · Nunito</h2>
+<div class="ty"><span style="font-size: 28px; line-height: 34px; font-weight: 800">Vũng Tàu 2N1Đ</span><span class="k">display 28/34 · 800</span></div>
+<div class="ty"><span style="font-size: 22px; line-height: 28px; font-weight: 800">Ở đâu đây?</span><span class="k">title 22/28 · 800</span></div>
+<div class="ty"><span style="font-size: 17px; line-height: 25px">Bạn đi được hôm nào nè?</span><span class="k">body 17/25 · 400</span></div>
+<div class="ty"><span style="font-size: 15px; line-height: 20px; color: #6B5546">Hùng rủ · 5/7 người đã vote</span><span class="k">caption 15/20</span></div>
+<div class="ty"><span style="font-size: 34px; line-height: 40px; font-weight: 800; font-variant-numeric: tabular-nums">1.930.000 ₫</span><span class="k">money 34/40 · tabular</span></div>
+</div>
+<div class="sec">
+<h2 class="sh">Khoảng cách (thang 4px)</h2>
+<div class="sp"><span class="bar" style="width: 4px"></span>4</div>
+<div class="sp"><span class="bar" style="width: 8px"></span>8</div>
+<div class="sp"><span class="bar" style="width: 12px"></span>12</div>
+<div class="sp"><span class="bar" style="width: 16px"></span>16 · lề màn hình</div>
+<div class="sp"><span class="bar" style="width: 24px"></span>24</div>
+<div class="sp"><span class="bar" style="width: 32px"></span>32</div>
+</div>
+<div class="sec">
+<h2 class="sh">Bo góc · bóng</h2>
+<div style="display: flex; gap: 14px; align-items: flex-end">
+<div style="width: 96px; height: 64px; border-radius: 18px; background: #FFFFFF; border: 1px solid #EBD9C8; box-shadow: 0 1px 3px rgba(42,29,20,0.10), 0 10px 28px rgba(42,29,20,0.08)"></div>
+<div style="width: 120px; height: 48px; border-radius: 999px; background: #C2410C"></div>
+<div style="width: 28px; height: 28px; border-radius: 8px; border: 2px solid #C9AE97"></div>
+</div>
+<span style="font-size: 15px; color: #6B5546">thẻ 18 · nút tròn 999 · ô tích 8 · nút chính cao 54</span>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":760,"height":968}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

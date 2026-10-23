@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S4 Bạn là ai</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2B2B2A}a:hover{color:#000000}
+.col{display:flex;flex-direction:column;gap:12px;width:390px}
+.st{font-size:16px;line-height:20px;font-weight:700;color:#4F4F4B}
+.ph{width:390px;height:844px;box-sizing:border-box;border:1px solid #BDBDB8;border-radius:24px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.bar{flex:none;display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:64px;padding:8px 16px;border-bottom:1px solid #E4E4E0}
+.bar b{font-size:18px;line-height:24px}
+.bd{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px;overflow:hidden;font-size:16px;line-height:24px}
+.ghost{height:64px;border:1px solid #D4D4CF;border-radius:12px}
+.tabsg{flex:none;height:64px;border-top:1px solid #D4D4CF;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));align-items:center;text-align:center;font-size:16px;font-weight:600;color:#55554F}
+.scr{position:absolute;left:0;top:0;right:0;bottom:0;background:rgba(20,20,19,0.45)}
+.sh{position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:20px 20px 0 0;padding:12px 16px 20px;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:24px}
+.grab{width:40px;height:4px;border-radius:2px;background:#C9C9C4;align-self:center}
+.h2{font-size:20px;line-height:28px;font-weight:700;margin:0}
+.mu{color:#55554F}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:0 16px;border:1px solid #8F8F8A;border-radius:24px;display:inline-flex;align-items:center;gap:8px;font-size:17px;background:#FFFFFF;color:#1F1F1E;font-family:inherit}
+.av{width:28px;height:28px;flex:none;border-radius:14px;background:#D9D9D4;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.sep{display:flex;align-items:center;gap:8px;color:#55554F}
+.sep span{flex:1;height:1px;background:#E4E4E0}
+.fl{display:flex;flex-direction:column;gap:6px}
+.fl label{font-size:16px;font-weight:600}
+.in{height:52px;border:1px solid #8F8F8A;border-radius:10px;padding:0 14px;font-size:17px;font-family:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#1F1F1E}
+.in.fo{border:2px solid #2B2B2A}
+.in.bad{border:2px solid #8A3B26}
+.err{color:#8A3B26}
+.btn{height:52px;border-radius:12px;background:#2B2B2A;color:#FFFFFF;font-size:17px;font-weight:700;border:0;width:100%;font-family:inherit}
+.btn2{min-height:44px;border-radius:12px;background:#FFFFFF;color:#2B2B2A;border:1px solid #8F8F8A;font-size:16px;font-weight:600;width:100%;font-family:inherit;padding:0 14px}
+.sk{background:#E6E6E2;border-radius:8px}
+</style>
+</helmet>
+<div style="width: 1760px; height: 968px; box-sizing: border-box; padding: 40px; background: #FAFAF8; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #1F1F1E; display: flex; gap: 40px">
+
+<div class="col">
+<div class="st">S4 · Bình thường (mở khi chạm vote lần đầu)</div>
+<div class="ph">
+<div class="bar"><b>Vũng Tàu 2N1Đ</b><span class="mu">Hùng rủ · 4/7 người đã vote</span></div>
+<div class="bd"><div class="ghost"></div><div class="ghost"></div><div class="ghost"></div></div>
+<div class="tabsg" aria-hidden="true"><span>Kèo</span><span>Chi tiêu</span><span>Trả tiền</span></div>
+<div class="scr"></div>
+<div class="sh" role="dialog" aria-label="Bạn là ai">
+<div class="grab"></div>
+<h2 class="h2">Bạn là ai trong nhóm?</h2>
+<span class="mu">Chạm tên mình để lưu vote. Không cần mật khẩu.</span>
+<div class="chips">
+<button class="chip"><span class="av" aria-hidden="true">H</span>Hùng</button>
+<button class="chip"><span class="av" aria-hidden="true">L</span>Linh</button>
+<button class="chip"><span class="av" aria-hidden="true">M</span>Mai</button>
+<button class="chip"><span class="av" aria-hidden="true">T</span>Thảo</button>
+</div>
+<div class="sep"><span></span>Tên bạn chưa có?<span></span></div>
+<div class="fl"><label for="s4a-ten">Tên của bạn</label><input class="in" id="s4a-ten" placeholder="Ví dụ: Tuấn"></div>
+<button class="btn">Vào kèo</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S4 · Trống (mới có người tạo)</div>
+<div class="ph">
+<div class="bar"><b>Vũng Tàu 2N1Đ</b><span class="mu">Hùng rủ · 0/7 người đã vote</span></div>
+<div class="bd"><div class="ghost"></div><div class="ghost"></div><div class="ghost"></div></div>
+<div class="tabsg" aria-hidden="true"><span>Kèo</span><span>Chi tiêu</span><span>Trả tiền</span></div>
+<div class="scr"></div>
+<div class="sh" role="dialog" aria-label="Bạn là ai">
+<div class="grab"></div>
+<h2 class="h2">Bạn là ai trong nhóm?</h2>
+<span class="mu">Mới có Hùng trong kèo. Gõ tên bạn để vào, không cần mật khẩu.</span>
+<div class="chips">
+<button class="chip"><span class="av" aria-hidden="true">H</span>Hùng (người tạo)</button>
+</div>
+<div class="fl"><label for="s4b-ten">Tên của bạn</label><input class="in fo" id="s4b-ten" placeholder="Ví dụ: Tuấn"></div>
+<button class="btn">Vào kèo</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S4 · Đang tải</div>
+<div class="ph">
+<div class="bar"><b>Vũng Tàu 2N1Đ</b><span class="mu">Hùng rủ · 4/7 người đã vote</span></div>
+<div class="bd"><div class="ghost"></div><div class="ghost"></div><div class="ghost"></div></div>
+<div class="tabsg" aria-hidden="true"><span>Kèo</span><span>Chi tiêu</span><span>Trả tiền</span></div>
+<div class="scr"></div>
+<div class="sh" role="dialog" aria-label="Bạn là ai" aria-busy="true">
+<div class="grab"></div>
+<div class="sk" style="width: 240px; height: 26px"></div>
+<div class="sk" style="width: 300px; height: 18px"></div>
+<div class="chips">
+<div class="sk" style="width: 96px; height: 48px; border-radius: 24px"></div>
+<div class="sk" style="width: 88px; height: 48px; border-radius: 24px"></div>
+<div class="sk" style="width: 92px; height: 48px; border-radius: 24px"></div>
+<div class="sk" style="width: 100px; height: 48px; border-radius: 24px"></div>
+</div>
+<div class="sk" style="height: 52px; border-radius: 10px"></div>
+<div class="sk" style="height: 52px; border-radius: 12px"></div>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S4 · Lỗi (trùng tên)</div>
+<div class="ph">
+<div class="bar"><b>Vũng Tàu 2N1Đ</b><span class="mu">Hùng rủ · 5/7 người đã vote</span></div>
+<div class="bd"><div class="ghost"></div><div class="ghost"></div><div class="ghost"></div></div>
+<div class="tabsg" aria-hidden="true"><span>Kèo</span><span>Chi tiêu</span><span>Trả tiền</span></div>
+<div class="scr"></div>
+<div class="sh" role="dialog" aria-label="Bạn là ai">
+<div class="grab"></div>
+<h2 class="h2">Đã có người tên Tuấn trong kèo</h2>
+<span class="mu">Nếu đó là bạn (ví dụ bạn đổi máy), chạm "Đúng, là mình". Nếu không, thêm chữ để phân biệt, ví dụ "Tuấn Béo".</span>
+<div class="fl"><label for="s4d-ten">Tên của bạn</label><input class="in bad" id="s4d-ten" value="Tuấn" aria-invalid="true"><span class="err">Tên này đã có người dùng</span></div>
+<button class="btn">Đúng, là mình</button>
+<button class="btn2">Dùng tên khác</button>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1760,"height":968}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S7 Thêm khoản chi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2B2B2A}a:hover{color:#000000}
+.col{display:flex;flex-direction:column;gap:12px;width:390px}
+.st{font-size:16px;line-height:20px;font-weight:700;color:#4F4F4B}
+.ph{width:390px;height:844px;box-sizing:border-box;border:1px solid #BDBDB8;border-radius:24px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.bar{height:56px;flex:none;display:flex;align-items:center;gap:4px;padding:0 12px 0 4px;border-bottom:1px solid #E4E4E0;font-size:18px;font-weight:700}
+.ic{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;color:#2B2B2A}
+.bd{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px;overflow:hidden;font-size:16px;line-height:24px}
+.ft{flex:none;padding:12px 16px 20px;border-top:1px solid #E4E4E0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:24px}
+.btn{height:52px;border-radius:12px;background:#2B2B2A;color:#FFFFFF;font-size:17px;font-weight:700;border:0;width:100%;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn.off{background:#C9C9C4;color:#3F3F3B}
+.mu{color:#55554F}
+.h2{font-size:17px;line-height:24px;font-weight:700;margin:0}
+.fl{display:flex;flex-direction:column;gap:6px}
+.fl label{font-size:16px;font-weight:600}
+.in{height:52px;border:1px solid #8F8F8A;border-radius:10px;padding:0 14px;font-size:17px;font-family:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#1F1F1E}
+.in.money{height:64px;font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.sel{box-sizing:border-box;min-height:48px;border:1px solid #8F8F8A;border-radius:10px;padding:0 14px;font-size:17px;font-family:inherit;width:100%;background:#FFFFFF;color:#1F1F1E;display:flex;align-items:center;justify-content:space-between}
+.hr{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.lk{font-size:16px;color:#2B2B2A;text-decoration:underline;background:none;border:0;min-height:44px;font-family:inherit;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 14px;border:1px solid #8F8F8A;border-radius:22px;display:inline-flex;align-items:center;gap:6px;font-size:16px;background:#FFFFFF;color:#1F1F1E;font-family:inherit}
+.chip.on{background:#2B2B2A;color:#FFFFFF;border-color:#2B2B2A}
+.chip.bad{border:2px solid #8A3B26}
+.sum{border:1px solid #2B2B2A;background:#F3F3F0;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.mn{font-weight:700;font-variant-numeric:tabular-nums}
+.err{color:#8A3B26;font-weight:600}
+.dim{opacity:0.45}
+</style>
+</helmet>
+<div style="width: 1760px; height: 968px; box-sizing: border-box; padding: 40px; background: #FAFAF8; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #1F1F1E; display: flex; gap: 40px">
+
+<div class="col">
+<div class="st">S7 · Bình thường (Tuấn ghi tiền bia)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Thêm khoản chi</div>
+<div class="bd">
+<div class="fl"><label for="s7a-tien">Số tiền</label><input class="in money" id="s7a-tien" inputmode="numeric" value="600.000 ₫"></div>
+<div class="fl"><label for="s7a-viec">Cho việc gì</label><input class="in" id="s7a-viec" value="Bia"></div>
+<div class="fl"><label for="s7a-ai">Ai trả?</label><button class="sel" id="s7a-ai">Tuấn (bạn)<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="hr"><h2 class="h2">Chia cho ai?</h2><button class="lk">Chọn cả nhóm</button></div>
+<div class="chips">
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Hùng</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Linh</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tuấn</button>
+<button class="chip" aria-pressed="false">Mai</button>
+<button class="chip" aria-pressed="false">Thảo</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Nam</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Khoa</button>
+</div>
+<div class="sum"><span>Chia 5 người · <span class="mn">120.000 ₫</span>/người</span><span class="mu">Mai, Thảo không bị tính khoản này</span></div>
+<span class="mu">Chia lẻ (ví dụ 600.000 ₫ cho 7 người): [quy tắc làm tròn — chốt ở Bước 7]</span>
+</div>
+<div class="ft">
+<button class="btn">Lưu khoản chi</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S7 · Trống (khoản mới)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Thêm khoản chi</div>
+<div class="bd">
+<div class="fl"><label for="s7b-tien">Số tiền</label><input class="in money" id="s7b-tien" inputmode="numeric" placeholder="Ví dụ 600.000" style="font-size: 20px; font-weight: 600"></div>
+<div class="fl"><label for="s7b-viec">Cho việc gì</label><input class="in" id="s7b-viec" placeholder="Ví dụ: Hải sản tối"></div>
+<div class="fl"><label for="s7b-ai">Ai trả?</label><button class="sel" id="s7b-ai">Tuấn (bạn)<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="hr"><h2 class="h2">Chia cho ai?</h2><span class="mu">Cả nhóm (7)</span></div>
+<div class="chips">
+<button class="chip on" aria-pressed="true">Hùng</button>
+<button class="chip on" aria-pressed="true">Linh</button>
+<button class="chip on" aria-pressed="true">Tuấn</button>
+<button class="chip on" aria-pressed="true">Mai</button>
+<button class="chip on" aria-pressed="true">Thảo</button>
+<button class="chip on" aria-pressed="true">Nam</button>
+<button class="chip on" aria-pressed="true">Khoa</button>
+</div>
+<span class="mu">Mặc định chia cả nhóm. Chạm tên để bỏ người không dùng (ví dụ không uống bia).</span>
+<span class="mu">Chia lẻ: [quy tắc làm tròn — chốt ở Bước 7]</span>
+</div>
+<div class="ft">
+<button class="btn off" disabled="">Lưu khoản chi</button>
+<span class="mu" style="text-align: center">Nhập số tiền để lưu</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S7 · Đang tải (đang lưu)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Thêm khoản chi</div>
+<div class="bd dim">
+<div class="fl"><label for="s7c-tien">Số tiền</label><input class="in money" id="s7c-tien" value="600.000 ₫" disabled=""></div>
+<div class="fl"><label for="s7c-viec">Cho việc gì</label><input class="in" id="s7c-viec" value="Bia" disabled=""></div>
+<div class="fl"><label for="s7c-ai">Ai trả?</label><div class="sel" id="s7c-ai">Tuấn (bạn)</div></div>
+<h2 class="h2">Chia cho ai?</h2>
+<div class="chips">
+<span class="chip on">Hùng</span><span class="chip on">Linh</span><span class="chip on">Tuấn</span><span class="chip">Mai</span><span class="chip">Thảo</span><span class="chip on">Nam</span><span class="chip on">Khoa</span>
+</div>
+<div class="sum"><span>Chia 5 người · <span class="mn">120.000 ₫</span>/người</span></div>
+</div>
+<div class="ft">
+<button class="btn" disabled=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Đang lưu…</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S7 · Lỗi (chưa chọn ai để chia)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Thêm khoản chi</div>
+<div class="bd">
+<div class="fl"><label for="s7d-tien">Số tiền</label><input class="in money" id="s7d-tien" inputmode="numeric" value="600.000 ₫"></div>
+<div class="fl"><label for="s7d-viec">Cho việc gì</label><input class="in" id="s7d-viec" value="Bia"></div>
+<div class="fl"><label for="s7d-ai">Ai trả?</label><button class="sel" id="s7d-ai">Tuấn (bạn)<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="hr"><h2 class="h2">Chia cho ai?</h2><button class="lk">Chọn cả nhóm</button></div>
+<div class="chips">
+<button class="chip bad" aria-pressed="false">Hùng</button>
+<button class="chip bad" aria-pressed="false">Linh</button>
+<button class="chip bad" aria-pressed="false">Tuấn</button>
+<button class="chip bad" aria-pressed="false">Mai</button>
+<button class="chip bad" aria-pressed="false">Thảo</button>
+<button class="chip bad" aria-pressed="false">Nam</button>
+<button class="chip bad" aria-pressed="false">Khoa</button>
+</div>
+<span class="err" role="alert">Chọn ít nhất 1 người để chia khoản này</span>
+</div>
+<div class="ft">
+<button class="btn">Lưu khoản chi</button>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1760,"height":968}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

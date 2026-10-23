@@ -22,6 +22,9 @@ Quy trình:
    đang chờ gì, cái chưa kiểm chứng, quyết định mới. Commit STATUS cùng file của bước
    nếu bước đó cho phép commit.
 7. Câu cuối cùng của bạn luôn là: đang chờ chủ dự án làm/trả lời gì.
+8. Quản lý context: nếu context đã dùng trên 80%, dừng ở một điểm an toàn, cập nhật docs/STATUS.md
+   đủ để một session mới đọc là làm tiếp được (bước hiện tại, việc đang dở, quyết định đã chốt,
+   điểm mở, cái chưa kiểm chứng), rồi đề nghị chủ dự án mở session mới và gõ /next.
 
 Không bao giờ vượt qua một GATE hay làm việc trong danh sách "Phải dừng lại hỏi" của CLAUDE.md
 mà chưa được chủ dự án đồng ý trong phiên này.

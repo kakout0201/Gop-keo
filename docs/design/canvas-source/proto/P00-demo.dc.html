@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Demo Góp Kèo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#A8380A}
+.app{width:390px;height:844px;box-sizing:border-box;background:#FFF7EE;font-family:'Nunito',system-ui,sans-serif;color:#2A1D14;display:flex;flex-direction:column;overflow:hidden;position:relative;font-size:17px;line-height:25px}
+.mu{color:#6B5546}
+.task{display:flex;align-items:center;gap:12px;min-height:52px;padding:6px 12px;background:#FFFFFF;border:1px solid #EBD9C8;border-radius:16px;color:#2A1D14;text-decoration:none}
+.n{width:28px;height:28px;flex:none;border-radius:14px;background:#FDE7D8;color:#A8380A;font-weight:800;font-size:15px;display:inline-flex;align-items:center;justify-content:center}
+.av{width:30px;height:30px;box-sizing:border-box;border-radius:15px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.pH{background:#FFE2C2;color:#7A3A00}.pL{background:#FAD4E4;color:#7D1D4A}.pT{background:#D3E5FF;color:#123E7C}.pM{background:#DDF2D3;color:#235A14}.pTh{background:#E8DAFF;color:#4A2382}.pN{background:#FFF0B3;color:#6A5200}.pK{background:#CFF0EC;color:#0E5650}
+.tx{flex:1;display:flex;flex-direction:column}
+.tx b{font-size:16px;line-height:22px}
+.tx span{font-size:14px;line-height:18px;color:#6B5546}
+</style>
+</helmet>
+<div class="app">
+<div style="padding: 18px 16px 8px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 26px; line-height: 32px; font-weight: 800">Góp Kèo · bản demo</span>
+<span class="mu" style="font-size: 15px; line-height: 20px">Chọn một việc để thử. Dữ liệu là giả, QR chỉ là hình minh họa, không quét được. Mỗi màn có nút "Đổi vai" để quay lại đây.</span>
+</div>
+<div style="flex: 1; padding: 4px 16px 12px; display: flex; flex-direction: column; gap: 6px; overflow: hidden">
+<a class="task" href="P01-s1-tao-keo.dc.html"><span class="n">1</span><span class="av pH">H</span><span class="tx"><b>Tạo kèo, gửi link vào Zalo</b><span>Bạn là Hùng</span></span></a>
+<a class="task" href="P03-s3-tuan-moi.dc.html"><span class="n">2</span><span class="av pT">T</span><span class="tx"><b>Mở link, vote ngày và chỗ</b><span>Bạn là Tuấn, lần đầu mở link</span></span></a>
+<a class="task" href="P06-s3-hung.dc.html"><span class="n">3</span><span class="av pH">H</span><span class="tx"><b>Chốt kèo</b><span>Bạn là Hùng, đã có 6/7 người vote</span></span></a>
+<a class="task" href="P09-s7-them-chi.dc.html"><span class="n">4</span><span class="av pH">H</span><span class="tx"><b>Ghi khoản Bia (Tuấn trả)</b><span>Chỉ chia cho người uống</span></span></a>
+<a class="task" href="P11-s8-mai-sua.dc.html"><span class="n">5</span><span class="av pM">M</span><span class="tx"><b>Xem chi tiêu sau khi có sửa sai</b><span>Bạn là Mai</span></span></a>
+<a class="task" href="P12-s6-khoa.dc.html"><span class="n">6</span><span class="av pK">K</span><span class="tx"><b>Trả tiền bằng mã QR</b><span>Bạn là Khoa, đang nợ 870.000 ₫</span></span></a>
+<a class="task" href="P15-s11-hung.dc.html"><span class="n">7</span><span class="av pH">H</span><span class="tx"><b>Xem ai chưa trả, copy tin nhắc</b><span>Bạn là Hùng</span></span></a>
+<a class="task" href="P17-s9-tai-khoan.dc.html"><span class="n">8</span><span class="av pH">H</span><span class="tx"><b>Nhập tài khoản nhận tiền</b><span>Bạn là Hùng</span></span></a>
+<a class="task" href="P18-s6-nguoi-moi.dc.html"><span class="n">9</span><span class="av pN">?</span><span class="tx"><b>Mở link sau khi đã chốt</b><span>Bạn chưa chọn tên</span></span></a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

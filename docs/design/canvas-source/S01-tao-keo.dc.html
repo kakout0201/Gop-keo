@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S1 Tạo kèo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2B2B2A}a:hover{color:#000000}
+.col{display:flex;flex-direction:column;gap:12px;width:390px}
+.st{font-size:16px;line-height:20px;font-weight:700;color:#4F4F4B}
+.ph{width:390px;height:844px;box-sizing:border-box;border:1px solid #BDBDB8;border-radius:24px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.bar{height:56px;flex:none;display:flex;align-items:center;gap:8px;padding:0 12px 0 16px;border-bottom:1px solid #E4E4E0;font-size:18px;font-weight:700}
+.bd{flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:10px;overflow:hidden;font-size:16px;line-height:24px}
+.ft{flex:none;padding:12px 16px 20px;border-top:1px solid #E4E4E0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:24px}
+.btn{height:52px;border-radius:12px;background:#2B2B2A;color:#FFFFFF;font-size:17px;font-weight:700;border:0;width:100%;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn.off{background:#C9C9C4;color:#3F3F3B}
+.mu{color:#55554F}
+.h2{font-size:17px;font-weight:700;margin:0}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl label{font-size:16px;font-weight:600}
+.in{height:48px;border:1px solid #8F8F8A;border-radius:10px;padding:0 14px;font-size:17px;font-family:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#1F1F1E}
+.cal{border:1px solid #D4D4CF;border-radius:12px;padding:6px 6px 8px;display:flex;flex-direction:column;gap:2px}
+.calh{display:flex;align-items:center;justify-content:space-between;font-weight:700}
+.ic{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;color:#2B2B2A}
+.grid{display:grid;grid-template-columns:repeat(7, minmax(0, 1fr));gap:2px;text-align:center}
+.wd{font-size:14px;line-height:24px;color:#55554F;font-weight:600}
+.d{height:42px;border:0;background:none;font-size:17px;font-family:inherit;border-radius:21px;color:#1F1F1E;padding:0}
+.d.on{background:#2B2B2A;color:#FFFFFF;font-weight:700}
+.pick{min-height:48px;border:1px dashed #8F8F8A;border-radius:12px;padding:0 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#FFFFFF;font-family:inherit;font-size:16px;color:#1F1F1E;width:100%;text-align:left}
+.ban{border:1px solid #8A3B26;background:#F6EFEC;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;color:#5A2516}
+.dim{opacity:0.45}
+</style>
+</helmet>
+<div style="width: 1760px; height: 968px; box-sizing: border-box; padding: 40px; background: #FAFAF8; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #1F1F1E; display: flex; gap: 40px">
+
+<div class="col">
+<div class="st">S1 · Bình thường</div>
+<div class="ph">
+<div class="bar">Tạo kèo mới</div>
+<div class="bd">
+<div class="fl"><label for="s1a-ten">Tên kèo</label><input class="in" id="s1a-ten" value="Vũng Tàu 2N1Đ"></div>
+<div class="fl"><label for="s1a-ban">Tên của bạn</label><input class="in" id="s1a-ban" value="Hùng"></div>
+<div><h2 class="h2">Ngày đề xuất</h2><span class="mu">Chạm để chọn, chọn nhiều ngày được</span></div>
+<div class="cal">
+<div class="calh"><button class="ic" aria-label="Tháng trước"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span>Tháng 11/2026</span><button class="ic" aria-label="Tháng sau"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+<div class="grid">
+<span class="wd">T2</span><span class="wd">T3</span><span class="wd">T4</span><span class="wd">T5</span><span class="wd">T6</span><span class="wd">T7</span><span class="wd">CN</span>
+<span></span><span></span><span></span><span></span><span></span><span></span><button class="d">1</button>
+<button class="d">2</button><button class="d">3</button><button class="d">4</button><button class="d">5</button><button class="d">6</button><button class="d">7</button><button class="d">8</button>
+<button class="d">9</button><button class="d">10</button><button class="d">11</button><button class="d">12</button><button class="d">13</button><button class="d on" aria-pressed="true">14</button><button class="d on" aria-pressed="true">15</button>
+<button class="d">16</button><button class="d">17</button><button class="d">18</button><button class="d">19</button><button class="d">20</button><button class="d on" aria-pressed="true">21</button><button class="d on" aria-pressed="true">22</button>
+<button class="d">23</button><button class="d">24</button><button class="d">25</button><button class="d">26</button><button class="d">27</button><button class="d on" aria-pressed="true">28</button><button class="d on" aria-pressed="true">29</button>
+<button class="d">30</button><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+<span>Đã chọn: <b>14–15, 21–22, 28–29/11</b></span>
+<button class="pick"><span><b>Chỗ đề xuất:</b> 2 chỗ</span><span style="text-decoration: underline">Sửa</span></button>
+</div>
+<div class="ft">
+<button class="btn">Tạo kèo</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S1 · Trống</div>
+<div class="ph">
+<div class="bar">Tạo kèo mới</div>
+<div class="bd">
+<div class="fl"><label for="s1b-ten">Tên kèo</label><input class="in" id="s1b-ten" placeholder="Ví dụ: Vũng Tàu 2N1Đ"></div>
+<div class="fl"><label for="s1b-ban">Tên của bạn</label><input class="in" id="s1b-ban" placeholder="Tên mọi người hay gọi bạn"></div>
+<div><h2 class="h2">Ngày đề xuất</h2><span class="mu">Chạm để chọn, chọn nhiều ngày được</span></div>
+<div class="cal">
+<div class="calh"><button class="ic" aria-label="Tháng trước"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span>Tháng 11/2026</span><button class="ic" aria-label="Tháng sau"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+<div class="grid">
+<span class="wd">T2</span><span class="wd">T3</span><span class="wd">T4</span><span class="wd">T5</span><span class="wd">T6</span><span class="wd">T7</span><span class="wd">CN</span>
+<span></span><span></span><span></span><span></span><span></span><span></span><button class="d">1</button>
+<button class="d">2</button><button class="d">3</button><button class="d">4</button><button class="d">5</button><button class="d">6</button><button class="d">7</button><button class="d">8</button>
+<button class="d">9</button><button class="d">10</button><button class="d">11</button><button class="d">12</button><button class="d">13</button><button class="d">14</button><button class="d">15</button>
+<button class="d">16</button><button class="d">17</button><button class="d">18</button><button class="d">19</button><button class="d">20</button><button class="d">21</button><button class="d">22</button>
+<button class="d">23</button><button class="d">24</button><button class="d">25</button><button class="d">26</button><button class="d">27</button><button class="d">28</button><button class="d">29</button>
+<button class="d">30</button><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+
+<button class="pick"><span>+ Thêm chỗ (không bắt buộc)</span></button>
+</div>
+<div class="ft">
+<button class="btn off" disabled="">Tạo kèo</button>
+<div class="mu" style="text-align: center">Cần tên kèo và ít nhất 1 ngày</div>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S1 · Đang tải (đang tạo)</div>
+<div class="ph">
+<div class="bar">Tạo kèo mới</div>
+<div class="bd dim">
+<div class="fl"><label for="s1c-ten">Tên kèo</label><input class="in" id="s1c-ten" value="Vũng Tàu 2N1Đ" disabled=""></div>
+<div class="fl"><label for="s1c-ban">Tên của bạn</label><input class="in" id="s1c-ban" value="Hùng" disabled=""></div>
+<h2 class="h2">Ngày đề xuất</h2>
+<div class="cal">
+<div class="calh"><span class="ic"></span><span>Tháng 11/2026</span><span class="ic"></span></div>
+<div class="grid">
+<span class="wd">T2</span><span class="wd">T3</span><span class="wd">T4</span><span class="wd">T5</span><span class="wd">T6</span><span class="wd">T7</span><span class="wd">CN</span>
+<span></span><span></span><span></span><span></span><span></span><span></span><span class="d">1</span>
+<span class="d">2</span><span class="d">3</span><span class="d">4</span><span class="d">5</span><span class="d">6</span><span class="d">7</span><span class="d">8</span>
+<span class="d">9</span><span class="d">10</span><span class="d">11</span><span class="d">12</span><span class="d">13</span><span class="d on">14</span><span class="d on">15</span>
+<span class="d">16</span><span class="d">17</span><span class="d">18</span><span class="d">19</span><span class="d">20</span><span class="d on">21</span><span class="d on">22</span>
+<span class="d">23</span><span class="d">24</span><span class="d">25</span><span class="d">26</span><span class="d">27</span><span class="d on">28</span><span class="d on">29</span>
+<span class="d">30</span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+<span>Đã chọn: <b>14–15, 21–22, 28–29/11</b></span>
+</div>
+<div class="ft">
+<button class="btn" disabled=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Đang tạo kèo…</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S1 · Lỗi (mất mạng khi tạo)</div>
+<div class="ph">
+<div class="bar">Tạo kèo mới</div>
+<div class="bd">
+<div class="ban" role="alert">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 16.5v.5"></path></svg>
+<span>Chưa tạo được kèo vì mất mạng. Những gì bạn nhập vẫn còn nguyên.</span>
+</div>
+<div class="fl"><label for="s1d-ten">Tên kèo</label><input class="in" id="s1d-ten" value="Vũng Tàu 2N1Đ"></div>
+<div class="fl"><label for="s1d-ban">Tên của bạn</label><input class="in" id="s1d-ban" value="Hùng"></div>
+<h2 class="h2">Ngày đề xuất</h2>
+<div class="cal">
+<div class="calh"><button class="ic" aria-label="Tháng trước"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button><span>Tháng 11/2026</span><button class="ic" aria-label="Tháng sau"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+<div class="grid">
+<span class="wd">T2</span><span class="wd">T3</span><span class="wd">T4</span><span class="wd">T5</span><span class="wd">T6</span><span class="wd">T7</span><span class="wd">CN</span>
+<span></span><span></span><span></span><span></span><span></span><span></span><button class="d">1</button>
+<button class="d">2</button><button class="d">3</button><button class="d">4</button><button class="d">5</button><button class="d">6</button><button class="d">7</button><button class="d">8</button>
+<button class="d">9</button><button class="d">10</button><button class="d">11</button><button class="d">12</button><button class="d">13</button><button class="d on" aria-pressed="true">14</button><button class="d on" aria-pressed="true">15</button>
+<button class="d">16</button><button class="d">17</button><button class="d">18</button><button class="d">19</button><button class="d">20</button><button class="d on" aria-pressed="true">21</button><button class="d on" aria-pressed="true">22</button>
+<button class="d">23</button><button class="d">24</button><button class="d">25</button><button class="d">26</button><button class="d">27</button><button class="d on" aria-pressed="true">28</button><button class="d on" aria-pressed="true">29</button>
+<button class="d">30</button><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+</div>
+</div>
+<div class="ft">
+<button class="btn">Thử lại</button>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1760,"height":968}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

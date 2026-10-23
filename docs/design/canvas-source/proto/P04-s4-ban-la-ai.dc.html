@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S4 Bạn là ai</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#A8380A}
+.app{width:390px;height:844px;box-sizing:border-box;background:#FFF7EE;font-family:'Nunito',system-ui,sans-serif;color:#2A1D14;display:flex;flex-direction:column;overflow:hidden;position:relative;font-size:17px;line-height:25px}
+.bar{flex:none;padding:14px 16px 8px;display:flex;align-items:flex-start;gap:6px}
+.tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.t{font-size:22px;line-height:28px;font-weight:800}
+.s{font-size:15px;line-height:20px;color:#6B5546}
+.ghost{height:76px;border:1px solid #EBD9C8;background:#FFFFFF;border-radius:18px}
+.scr{position:absolute;left:0;top:0;right:0;bottom:0;background:rgba(42,29,20,0.45)}
+.sh{position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:24px 24px 0 0;padding:10px 16px 18px;display:flex;flex-direction:column;gap:12px}
+.grab{width:40px;height:4px;border-radius:2px;background:#C9AE97;align-self:center}
+.mu{color:#6B5546}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:48px;padding:0 16px 0 8px;border:1.5px solid #C9AE97;border-radius:999px;display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;color:#2A1D14;text-decoration:none;font-weight:700}
+.av{width:32px;height:32px;box-sizing:border-box;border-radius:16px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.pH{background:#FFE2C2;color:#7A3A00}.pL{background:#FAD4E4;color:#7D1D4A}.pM{background:#DDF2D3;color:#235A14}.pTh{background:#E8DAFF;color:#4A2382}
+.sep{display:flex;align-items:center;gap:8px;color:#6B5546;font-size:15px}
+.sep span{flex:1;height:1px;background:#EBD9C8}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl label{font-size:15px;line-height:20px;font-weight:800}
+.in{height:52px;border:2px solid #C2410C;border-radius:14px;padding:0 14px;font:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#2A1D14}
+.btn{height:56px;border-radius:999px;background:#C2410C;color:#FFFFFF;font:inherit;font-size:18px;font-weight:800;border:0;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-sizing:border-box}
+</style>
+</helmet>
+<div class="app">
+<div class="bar"><div class="tt"><span class="t">Vũng Tàu 2N1Đ</span><span class="s">Hùng rủ · 4/7 người đã vote</span></div></div>
+<div style="padding: 8px 16px; display: flex; flex-direction: column; gap: 8px"><div class="ghost"></div><div class="ghost"></div><div class="ghost"></div></div>
+<div class="scr"></div>
+<div class="sh" role="dialog" aria-label="Bạn là ai trong nhóm">
+<div class="grab"></div>
+<span style="font-size: 22px; line-height: 28px; font-weight: 800">Bạn là ai trong nhóm?</span>
+<span class="mu">Chạm tên mình để lưu vote nha. Không cần mật khẩu.</span>
+<div class="chips">
+<a class="chip" href="#"><span class="av pH">H</span>Hùng</a>
+<a class="chip" href="#"><span class="av pL">L</span>Linh</a>
+<a class="chip" href="#"><span class="av pM">M</span>Mai</a>
+<a class="chip" href="#"><span class="av pTh">Th</span>Thảo</a>
+</div>
+<div class="sep"><span></span>Chưa thấy tên mình?<span></span></div>
+<div class="fl"><label for="p4-ten">Tên của bạn</label><input class="in" id="p4-ten" value="Tuấn"></div>
+<a class="btn" href="P05-s3-tuan-da-vote.dc.html">Vào kèo</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

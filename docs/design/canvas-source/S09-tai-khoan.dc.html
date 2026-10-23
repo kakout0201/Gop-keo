@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S9 Tài khoản nhận tiền</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2B2B2A}a:hover{color:#000000}
+.col{display:flex;flex-direction:column;gap:12px;width:390px}
+.st{font-size:16px;line-height:20px;font-weight:700;color:#4F4F4B}
+.ph{width:390px;height:844px;box-sizing:border-box;border:1px solid #BDBDB8;border-radius:24px;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.bar{height:56px;flex:none;display:flex;align-items:center;gap:4px;padding:0 12px 0 4px;border-bottom:1px solid #E4E4E0;font-size:18px;font-weight:700}
+.ic{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:0;background:none;padding:0;color:#2B2B2A}
+.bd{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px;overflow:hidden;font-size:16px;line-height:24px}
+.ft{flex:none;padding:12px 16px 20px;border-top:1px solid #E4E4E0;display:flex;flex-direction:column;gap:8px;font-size:16px;line-height:24px}
+.btn{height:52px;border-radius:12px;background:#2B2B2A;color:#FFFFFF;font-size:17px;font-weight:700;border:0;width:100%;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn.off{background:#C9C9C4;color:#3F3F3B}
+.mu{color:#55554F}
+.fl{display:flex;flex-direction:column;gap:6px}
+.fl label{font-size:16px;font-weight:600}
+.in{height:52px;border:1px solid #8F8F8A;border-radius:10px;padding:0 14px;font-size:17px;font-family:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#1F1F1E;font-variant-numeric:tabular-nums}
+.in.bad{border:2px solid #8A3B26}
+.sel{box-sizing:border-box;height:52px;border:1px solid #8F8F8A;border-radius:10px;padding:0 14px;font-size:17px;font-family:inherit;width:100%;background:#FFFFFF;color:#1F1F1E;display:flex;align-items:center;justify-content:space-between}
+.info{border:1px solid #8F8F8A;background:#F3F3F0;border-radius:12px;padding:12px 14px}
+.cd{border:1px solid #D4D4CF;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:14px}
+.qr{width:96px;height:96px;flex:none;border:2px dashed #8F8F8A;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;color:#3F3F3B;font-size:14px;line-height:18px;background:repeating-linear-gradient(45deg,#F3F3F0,#F3F3F0 8px,#FFFFFF 8px,#FFFFFF 16px)}
+.err{color:#8A3B26;font-weight:600}
+.dim{opacity:0.45}
+</style>
+</helmet>
+<div style="width: 1760px; height: 968px; box-sizing: border-box; padding: 40px; background: #FAFAF8; font-family: 'Be Vietnam Pro', system-ui, sans-serif; color: #1F1F1E; display: flex; gap: 40px">
+
+<div class="col">
+<div class="st">S9 · Bình thường (Hùng)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Tài khoản nhận tiền</div>
+<div class="bd">
+<div class="info">Bạn được nhận <b>1.930.000 ₫</b>. Nhập tài khoản để mọi người quét QR chuyển cho bạn.</div>
+<div class="fl"><label for="s9a-nh">Ngân hàng</label><button class="sel" id="s9a-nh">MB Bank<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="fl"><label for="s9a-stk">Số tài khoản</label><input class="in" id="s9a-stk" inputmode="numeric" value="0000 1111 2222"></div>
+<div class="fl"><label for="s9a-ten">Tên chủ tài khoản</label><input class="in" id="s9a-ten" value="NGUYEN VAN HUNG"><span class="mu">Gõ có dấu cũng được, app tự đổi sang chữ in hoa không dấu cho khớp mã QR</span></div>
+<div class="cd"><div class="qr">QR minh họa</div><span class="mu">Mọi người sẽ thấy mã như thế này, đã điền sẵn số tiền từng người nợ.</span></div>
+<span class="mu">Ai mở link kèo này đều thấy số tài khoản của bạn.</span>
+</div>
+<div class="ft">
+<button class="btn">Lưu tài khoản</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S9 · Trống</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Tài khoản nhận tiền</div>
+<div class="bd">
+<div class="info">Bạn được nhận <b>1.930.000 ₫</b>. Chưa có tài khoản nên mọi người chưa thấy mã QR để trả bạn.</div>
+<div class="fl"><label for="s9b-nh">Ngân hàng</label><button class="sel" id="s9b-nh"><span class="mu">Chọn ngân hàng</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="fl"><label for="s9b-stk">Số tài khoản</label><input class="in" id="s9b-stk" inputmode="numeric" placeholder="Chỉ gồm chữ số"></div>
+<div class="fl"><label for="s9b-ten">Tên chủ tài khoản</label><input class="in" id="s9b-ten" placeholder="Ví dụ: Nguyễn Văn Hùng"><span class="mu">Tự đổi thành NGUYEN VAN HUNG</span></div>
+</div>
+<div class="ft">
+<button class="btn off" disabled="">Lưu tài khoản</button>
+<span class="mu" style="text-align: center">Cần đủ ngân hàng, số tài khoản và tên</span>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S9 · Đang tải (đang lưu)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Tài khoản nhận tiền</div>
+<div class="bd dim">
+<div class="info">Bạn được nhận <b>1.930.000 ₫</b>.</div>
+<div class="fl"><label for="s9c-nh">Ngân hàng</label><div class="sel" id="s9c-nh">MB Bank</div></div>
+<div class="fl"><label for="s9c-stk">Số tài khoản</label><input class="in" id="s9c-stk" value="0000 1111 2222" disabled=""></div>
+<div class="fl"><label for="s9c-ten">Tên chủ tài khoản</label><input class="in" id="s9c-ten" value="NGUYEN VAN HUNG" disabled=""></div>
+</div>
+<div class="ft">
+<button class="btn" disabled=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"></path></svg>Đang lưu…</button>
+</div>
+</div>
+</div>
+
+<div class="col">
+<div class="st">S9 · Lỗi (số tài khoản sai dạng)</div>
+<div class="ph">
+<div class="bar"><button class="ic" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>Tài khoản nhận tiền</div>
+<div class="bd">
+<div class="fl"><label for="s9d-nh">Ngân hàng</label><button class="sel" id="s9d-nh">MB Bank<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="fl"><label for="s9d-stk">Số tài khoản</label><input class="in bad" id="s9d-stk" inputmode="numeric" value="0000 1111 22a2" aria-invalid="true"><span class="err" role="alert">Số tài khoản chỉ gồm chữ số (6–19 số)</span></div>
+<div class="fl"><label for="s9d-ten">Tên chủ tài khoản</label><input class="in" id="s9d-ten" value="NGUYEN VAN HUNG"></div>
+<span class="mu">Kiểm tra kỹ trước khi lưu: tiền chuyển nhầm tài khoản rất khó lấy lại.</span>
+</div>
+<div class="ft">
+<button class="btn">Lưu tài khoản</button>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1760,"height":968}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

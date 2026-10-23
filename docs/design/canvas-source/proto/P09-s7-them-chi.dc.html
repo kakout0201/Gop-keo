@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S7 Ghi khoản Bia</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#A8380A}
+.app{width:390px;height:844px;box-sizing:border-box;background:#FFF7EE;font-family:'Nunito',system-ui,sans-serif;color:#2A1D14;display:flex;flex-direction:column;overflow:hidden;position:relative;font-size:17px;line-height:25px}
+.bar{flex:none;padding:14px 16px 8px;display:flex;align-items:flex-start;gap:6px}
+.tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.t{font-size:22px;line-height:28px;font-weight:800}
+.s{font-size:15px;line-height:20px;color:#6B5546}
+.back{width:44px;height:44px;margin:-8px -4px 0 -12px;display:inline-flex;align-items:center;justify-content:center;color:#2A1D14;border-radius:22px;flex:none}
+.demo{flex:none;padding:3px 10px;border-radius:999px;border:1px dashed #C9AE97;font-size:13px;line-height:18px;color:#6B5546;text-decoration:none;white-space:nowrap;margin-top:4px}
+.bd{flex:1;padding:4px 16px 8px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.mu{color:#6B5546}
+.cap{font-size:15px;line-height:20px;color:#6B5546}
+.ft{flex:none;padding:8px 16px 14px;display:flex;flex-direction:column;gap:6px}
+.btn{height:56px;border-radius:999px;background:#C2410C;color:#FFFFFF;font:inherit;font-size:18px;font-weight:800;border:0;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.fl{display:flex;flex-direction:column;gap:4px}
+.fl label,.lb{font-size:15px;line-height:20px;font-weight:800}
+.in{height:52px;border:1.5px solid #C9AE97;border-radius:14px;padding:0 14px;font:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#2A1D14}
+.money{height:64px;font-size:30px;font-weight:800;font-variant-numeric:tabular-nums}
+.sel{height:52px;border:1.5px solid #C9AE97;border-radius:14px;padding:0 10px 0 8px;font:inherit;width:100%;box-sizing:border-box;background:#FFFFFF;color:#2A1D14;display:flex;align-items:center;gap:10px}
+.av{width:32px;height:32px;box-sizing:border-box;border-radius:16px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.pT{background:#D3E5FF;color:#123E7C}
+.hr{display:flex;align-items:center;justify-content:space-between}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 14px;border:1.5px solid #C9AE97;border-radius:999px;display:inline-flex;align-items:center;gap:6px;background:#FFFFFF;font:inherit;font-weight:700;color:#2A1D14}
+.chip.on{background:#FDE7D8;border-color:#C2410C;color:#7C2906}
+.sum{background:#FFFFFF;border:1px solid #EBD9C8;border-radius:16px;padding:10px 14px;display:flex;flex-direction:column;gap:2px}
+.mn{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+</style>
+</helmet>
+<div class="app">
+<div class="bar"><a class="back" href="P08-s6-hung.dc.html" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a><div class="tt"><span class="t">Thêm khoản chi</span><span class="s">Vũng Tàu 2N1Đ</span></div><a class="demo" href="P00-demo.dc.html">Đổi vai</a></div>
+<div class="bd">
+<div class="fl"><label for="p9-tien">Số tiền</label><input class="in money" id="p9-tien" inputmode="numeric" value="600.000 ₫"></div>
+<div class="fl"><label for="p9-viec">Cho việc gì</label><input class="in" id="p9-viec" value="Bia"></div>
+<div class="fl"><label for="p9-ai">Ai đã trả?</label><button class="sel" id="p9-ai"><span class="av pT">T</span><span style="flex: 1; text-align: left">Tuấn</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button></div>
+<div class="hr"><span class="lb">Chia cho ai?</span><a href="#" style="font-weight: 800">Chọn cả nhóm</a></div>
+<div class="chips">
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Hùng</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Linh</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Tuấn</button>
+<button class="chip" aria-pressed="false">Mai</button>
+<button class="chip" aria-pressed="false">Thảo</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Nam</button>
+<button class="chip on" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Khoa</button>
+</div>
+<div class="sum"><span>Chia đều cho 5 người: <span class="mn">120.000 ₫</span> mỗi người</span><span class="cap">Mai và Thảo không bị tính khoản này.</span></div>
+<span class="cap">Khi chia ra số lẻ: [quy tắc làm tròn — chốt ở Bước 7]</span>
+</div>
+<div class="ft">
+<a class="btn" href="P10-s8-hung.dc.html">Lưu khoản chi</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

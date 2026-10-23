@@ -24,23 +24,25 @@ Git, Node 22, VS Code, app Claude (tab Code), tài khoản GitHub/Vercel/Supabas
   (1) user flow + danh sách màn hình S1..Sn, (2) wireframe mobile 390px với 4 trạng thái
   (bình thường/trống/loading/lỗi), (3) 3 hướng giao diện cho 2 màn hình quan trọng nhất
   + frame Design tokens + tên component, (4) prototype bấm được với dữ liệu giả tiếng Việt.
-- USER: chủ dự án chạy prompt (1) và (2) trong Claude Design, chụp/export kết quả
-  vào docs/design/flow/ và docs/design/wireframe/.
+- AUTO: chạy prompt (1) và (2) bằng /design (canvas Design "Góp Kèo" ngay trong Claude Code),
+  export kết quả vào docs/design/flow/ và docs/design/wireframe/ (PNG theo mã màn hình nếu được;
+  không thì .zip/PDF/mã nguồn artboard, và ghi rõ).
 - AUTO: rà wireframe theo checklist (3 chạm cho việc chính, 1 nút chính/màn hình,
   có trạng thái trống, tiền có ₫ và dấu chấm nghìn). Ghi góp ý vào docs/design/review.md.
+- GATE: chủ dự án xem design (link canvas) và review, duyệt flow + wireframe.
 
 ## Bước 4 — Giao diện
-- USER: chạy prompt (3), xem 3 hướng.
+- AUTO: chạy prompt (3) bằng /design trên cùng canvas, ra 3 hướng.
 - ASK: chủ dự án chọn hướng. AUTO: ghi lý do vào docs/design/decisions.md.
 
 ## Bước 5 — Prototype + test người thật
-- USER: chạy prompt (4); gửi prototype cho 2–3 người, quan sát, ghi chỗ họ khựng lại.
-- AUTO: tổng hợp phản hồi thành danh sách sửa; USER sửa trong Claude Design.
+- AUTO: chạy prompt (4) bằng /design, ra prototype bấm được.
+- USER: gửi prototype cho 2–3 người, quan sát, ghi chỗ họ khựng lại.
+- AUTO: tổng hợp phản hồi thành danh sách sửa, sửa trên canvas bằng /design.
 
 ## Bước 6 — Handoff
-- USER: export handoff bundle sang Claude Code; export PNG các frame (SELECTED)
-  vào docs/design/screens/ và tokens vào docs/design/tokens.md.
-- AUTO: kiểm tra đủ file, commit "docs: add design".
+- AUTO: export các frame đã chọn (PNG nếu được) vào docs/design/screens/ và tokens vào
+  docs/design/tokens.md; kiểm tra đủ file, commit "docs: add design".
 - GATE: thiết kế được chốt.
 
 ## Bước 7 — Đặc tả
@@ -82,7 +84,10 @@ Slice 03 và 04 chạy song song được (git worktree hoặc 2 session).
 
 ## Bước 18 — Bug bash + nghiệm thu
 - USER: 3 điện thoại thật, mở link trong Zalo; mời 3–5 bạn dùng preview 2 ngày.
-- AUTO: lỗi P0–P1 → viết test tái hiện trước rồi sửa.
+- AUTO: soạn kịch bản bug bash có nhiệm vụ kiểm chứng 8 giả định của brief (docs/00-brief.md,
+  xem trạng thái ở docs/STATUS.md), gồm cả lưu ảnh QR từ trình duyệt Zalo rồi quét bằng app ngân hàng.
+- USER: chạy kịch bản với người thật, ghi kết quả từng giả định (đúng / sai / chưa rõ).
+- AUTO: cập nhật trạng thái 8 giả định trong STATUS; lỗi P0–P1 → viết test tái hiện trước rồi sửa.
 - GATE: mọi story Must đạt, không còn P0–P1, checklist bảo mật + mobile đã tick.
 
 ## Bước 19 — Deploy production
@@ -93,6 +98,8 @@ Slice 03 và 04 chạy song song được (git worktree hoặc 2 session).
 - GATE: smoke xanh, log sạch 10 phút.
 
 ## Bước 20 — Ra mắt
-- AUTO: soạn tin nhắn giới thiệu cho nhóm Zalo + mẫu báo lỗi.
-- USER: gửi, dùng cho một buổi đi chơi thật.
-- AUTO (sau 1–2 tuần): gom phản hồi thành backlog v1.1.
+- AUTO: soạn tin nhắn giới thiệu cho nhóm Zalo + mẫu báo lỗi + phiếu hỏi sau chuyến đi
+  (câu hỏi kiểm chứng 8 giả định của brief và các chỉ số thành công).
+- USER: gửi, dùng cho một buổi đi chơi thật; gửi phiếu hỏi cho cả nhóm sau chuyến đi.
+- AUTO (sau 1–2 tuần): gom phản hồi thành backlog v1.1; chốt trạng thái cuối của 8 giả định
+  (đúng / sai / chưa rõ) trong STATUS và đối chiếu với chỉ số thành công của brief.

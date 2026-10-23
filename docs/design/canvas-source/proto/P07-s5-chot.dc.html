@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>S5 Chốt kèo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#A8380A}
+.app{width:390px;height:844px;box-sizing:border-box;background:#FFF7EE;font-family:'Nunito',system-ui,sans-serif;color:#2A1D14;display:flex;flex-direction:column;overflow:hidden;position:relative;font-size:17px;line-height:25px}
+.bar{flex:none;padding:14px 16px 8px;display:flex;align-items:flex-start;gap:6px}
+.tt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.t{font-size:22px;line-height:28px;font-weight:800}
+.s{font-size:15px;line-height:20px;color:#6B5546}
+.back{width:44px;height:44px;margin:-8px -4px 0 -12px;display:inline-flex;align-items:center;justify-content:center;color:#2A1D14;border-radius:22px;flex:none}
+.demo{flex:none;padding:3px 10px;border-radius:999px;border:1px dashed #C9AE97;font-size:13px;line-height:18px;color:#6B5546;text-decoration:none;white-space:nowrap;margin-top:4px}
+.bd{flex:1;padding:4px 16px 8px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.h2{margin:6px 0 0;font-size:19px;line-height:26px;font-weight:800}
+.cap{font-size:15px;line-height:20px;color:#6B5546}
+.ft{flex:none;padding:8px 16px 14px;display:flex;flex-direction:column;gap:6px}
+.btn{height:56px;border-radius:999px;background:#C2410C;color:#FFFFFF;font:inherit;font-size:18px;font-weight:800;border:0;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;box-sizing:border-box}
+.info{background:#FFFFFF;border:1px solid #EBD9C8;border-radius:16px;padding:10px 14px}
+.ro{min-height:56px;border:1px solid #EBD9C8;background:#FFFFFF;border-radius:18px;padding:8px 14px;display:flex;align-items:center;gap:12px;box-sizing:border-box}
+.ro.on{background:#FDE7D8;border-color:#F2B99A}
+.ro input{width:22px;height:22px;margin:0;accent-color:#C2410C;flex:none}
+.ro .x{flex:1;display:flex;flex-direction:column}
+.cnt{font-size:15px;color:#6B5546;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sum{text-align:center;font-weight:800}
+</style>
+</helmet>
+<div class="app">
+<div class="bar"><a class="back" href="P06-s3-hung.dc.html" aria-label="Quay lại"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a><div class="tt"><span class="t">Chốt kèo thôi!</span><span class="s">Vũng Tàu 2N1Đ · 6/7 đã vote</span></div><a class="demo" href="P00-demo.dc.html">Đổi vai</a></div>
+<div class="bd">
+<div class="info">Còn <b>Khoa</b> chưa vote. Chốt luôn cũng được, Khoa vẫn xem được kết quả.</div>
+<h2 class="h2">Ngày</h2>
+<label class="ro"><input type="radio" name="p7d"><span class="x">T7–CN 14–15/11</span><span class="cnt">3 phiếu</span></label>
+<label class="ro on"><input type="radio" name="p7d" checked=""><span class="x"><b>T7–CN 21–22/11</b><span class="cap" style="color: #A8380A; font-weight: 800">★ Nhiều phiếu nhất</span></span><span class="cnt">6 phiếu</span></label>
+<label class="ro"><input type="radio" name="p7d"><span class="x">T7–CN 28–29/11</span><span class="cnt">1 phiếu</span></label>
+<h2 class="h2">Chỗ</h2>
+<label class="ro on"><input type="radio" name="p7c" checked=""><span class="x"><b>Homestay Biển Xanh</b><span class="cap">2.800.000 ₫/đêm · <b style="color: #A8380A">★ Nhiều phiếu nhất</b></span></span><span class="cnt">5 phiếu</span></label>
+<label class="ro"><input type="radio" name="p7c"><span class="x">Villa Bãi Sau<span class="cap">3.500.000 ₫/đêm</span></span><span class="cnt">2 phiếu</span></label>
+<span class="cap">Chốt xong, thẻ tóm tắt sẽ ghim ở đầu trang kèo cho cả nhóm, và vote đóng lại.</span>
+</div>
+<div class="ft">
+<span class="sum">21–22/11 · Homestay Biển Xanh</span>
+<a class="btn" href="P08-s6-hung.dc.html">Chốt kèo</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

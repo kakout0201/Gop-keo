@@ -1,6 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 9 — Thiết lập repo**, đang ở **ASK** (4 câu bên dưới). Chưa tạo code nào.
+Bước hiện tại: **Bước 9 — Thiết lập repo**. Code đã tạo trên branch `chore/repo-setup` (chưa push).
+Đang chờ: (1) chủ dự án chọn email commit trước khi push (repo công khai); (2) chủ dự án tạo `.wslconfig` + bật Docker.
 Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "docs: add slice plans".
 
 ## Đã xong
@@ -64,18 +65,37 @@ Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "d
   3. Migration tên `YYYYMMDDHHMMSS_ten.sql` (chuẩn Supabase CLI), kể cả init; mỗi slice một migration hàm SQL.
   4. GATE slice 05: quét bằng app ngân hàng có sẵn (tối thiểu 1), ghi app chưa thử vào STATUS.
   Schema chạy lại trên PGlite: 29 kiểm đúng như mong đợi.
+- Bước 9 (2026-10-24), trên branch `chore/repo-setup`:
+  - Remote `origin` = https://github.com/kakout0201/Gop-keo.git; `git ls-remote` rỗng (repo trống) → không cần hỏi thêm.
+  - Quét bí mật: gitleaks 8.30.1 (tải từ GitHub release, đã khớp checksum) quét toàn bộ lịch sử (`--all`) và thư mục làm việc:
+    **không có rò rỉ**. Grep tay: không email, số điện thoại, khóa, số TK thật trong file theo dõi; số TK mẫu 000011112222 là giả.
+    Có link canvas riêng tư `claude.ai/artifact/...` trong docs (người ngoài không mở được). Tên chủ dự án có trong tác giả
+    commit và LICENSE (trùng tên công khai trên GitHub profile).
+  - `main`: thêm commit `chore: add gitignore` (.env* trừ .env.example) — main vẫn chỉ có docs.
+  - Next.js **16.4.3** (create-next-app, App Router, TS strict, Tailwind 4, ESLint), React 19.3; zod 4, supabase-js 2,
+    server-only; dev: vitest 5, coverage, prettier, supabase CLI 2.122; @types/node 22. Scripts `lint`, `typecheck`
+    (`next typegen && tsc --noEmit`), `format:check`, `test`, `check`. `npm run check` và `npm run build` xanh.
+  - CI `.github/workflows/ci.yml` (job `check`). `.gitattributes` giữ LF. README (ảnh prototype, quy trình), LICENSE MIT.
+  - CLAUDE.md thêm luật kỹ thuật; `.claude/agents/` reviewer, test-writer, security-auditor; `.claude/commands/` slice, verify,
+    ship; settings: thêm quyền npx cho vitest/tsc/prettier/supabase local, chặn đọc `.env*` mọi thư mục, force push,
+    `db push`, `db reset --linked`.
+  - Chưa: `supabase init` + cấu hình rút gọn (slice 00, cần Docker); Playwright + trình duyệt (slice 02b); không gọi subagent
+    reviewer cho Bước 9 (chỉ cấu hình, đã tự kiểm `check` + build + gitleaks).
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
-## Đang chờ chủ dự án — ASK Bước 9
-Trả lời `/next đồng ý hết` hoặc `/next Q2: ...` (câu không nhắc = đồng ý đề xuất).
-| Q | Câu hỏi | Đề xuất | Lý do ngắn |
-|---|---|---|---|
-| Q1 | Supabase cho phát triển + test: local bằng Docker (WSL2) hay project dev trên cloud? | **Local, bản rút gọn** (`supabase start -x` bỏ studio, storage, realtime, edge-runtime, logflare, vector, imgproxy… chỉ giữ Postgres + REST + gateway) cho code và test; project **dev trên cloud** chỉ cho bản preview Vercel (Bước 10). | Máy có Docker Desktop + WSL2 (đang tắt), RAM 7,7 GB: bản rút gọn chạy khoảng 1 GB; test integration/đồng thời reset DB thoải mái; migration chạy local không phải hỏi mỗi lần, chỉ `db push` lên cloud mới hỏi. Cần bật Docker Desktop và tải image lần đầu (~1–2 GB). |
-| Q2 | Code đầu tiên (Bước 9) commit ở đâu? (CLAUDE.md: từ Bước 9 không commit thẳng `main`) | Làm trên branch `chore/repo-setup`; lần push đầu đẩy `main` (chỉ có docs) + branch; bạn tạo PR và merge trên GitHub. | Đúng luật git của dự án ngay từ commit code đầu tiên. |
-| Q3 | Cài GitHub CLI (`gh`) để `/ship` tự push + tạo PR? Máy chưa có `gh`. | **Có.** Bạn tự chạy `winget install GitHub.cli` rồi `gh auth login` (đăng nhập là việc của bạn). Không có `gh` thì `/ship` chỉ push, bạn tạo PR trên web. | `/ship` và đọc kết quả CI cần `gh`. |
-| Q4 | Repo GitHub công khai hay riêng tư? | **Riêng tư.** Vercel Hobby và GitHub Actions vẫn dùng được. | Có tên thật, dữ liệu mẫu, kế hoạch bảo mật. |
-Mặc định không hỏi: Next.js bản ổn định mới nhất lúc khởi tạo (`create-next-app`, App Router, TypeScript, Tailwind,
-ESLint), npm, Node 22 sẵn có.
+## Đang chờ chủ dự án — Bước 9
+- Email commit: đã chọn noreply GitHub; mọi commit được viết lại tác giả **trước** lần push đầu; repo đặt
+  `git config user.email` riêng. Docker Desktop đã bật, `.wslconfig` đã tạo, `gh` đã cài và đăng nhập.
+- Sau push: PR `chore/repo-setup` → `main`, bật bảo mật repo, branch protection; chờ CI `check` xanh rồi
+  **hỏi chủ dự án trước khi merge** (xem mục cập nhật cuối phiên).
+
+## Quyết định Bước 9 (2026-10-24)
+| Q | Chốt |
+|---|---|
+| Q1 | Supabase **local rút gọn** cho code + test (cần Docker, WSL giới hạn ~3 GB); project dev trên cloud chỉ cho preview Vercel |
+| Q2 | Code Bước 9 trên branch `chore/repo-setup`; push `main` (chỉ docs + .gitignore) và branch; chủ dự án tạo + merge PR |
+| Q3 | Chủ dự án tự cài `gh` và đăng nhập |
+| Q4 | Repo **công khai** https://github.com/kakout0201/Gop-keo (làm profile). Được phép push theo 5 điều kiện: ls-remote trống, quét secret, hỏi email, README + LICENSE, push rồi hướng dẫn bảo vệ repo |
 
 ## Quyết định Bước 7 (Q1–Q14 — đã chốt theo đề xuất, 2026-10-24)
 | Q | Câu hỏi | Đã chốt | Lý do ngắn |

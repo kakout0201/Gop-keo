@@ -6,13 +6,41 @@ import { readLocalSupabase } from "./tests/local-supabase";
 const remoteBaseUrl = process.env.BASE_URL;
 const localPort = 3100;
 
-function localServerEnv() {
-  const sb = readLocalSupabase();
+if (process.argv.some((arg) => arg.startsWith("--base-url"))) {
+  throw new Error(
+    "Playwright không có cờ --base-url. Dùng biến môi trường: BASE_URL=<link> npm run test:smoke",
+  );
+}
+
+// Chỉ cần Supabase local khi tự chạy app ở máy; không có thì bỏ webServer và báo, không làm hỏng việc nạp config.
+function localServerEnv(): Record<string, string> | undefined {
+  let sb;
+  try {
+    sb = readLocalSupabase();
+  } catch (error) {
+    console.warn(
+      `[playwright] ${error instanceof Error ? error.message : error} — không tự chạy app.`,
+    );
+    return undefined;
+  }
   return {
     SUPABASE_URL: sb.apiUrl,
     SUPABASE_SERVICE_ROLE_KEY: sb.serviceRoleKey,
     IP_HASH_SECRET: randomBytes(32).toString("base64url"),
     APP_URL: `http://127.0.0.1:${localPort}`,
+  };
+}
+
+function webServerConfig() {
+  if (remoteBaseUrl) return undefined;
+  const env = localServerEnv();
+  if (!env) return undefined;
+  return {
+    command: `npm run build && npx next start -p ${localPort}`,
+    url: `http://127.0.0.1:${localPort}/api/health`,
+    timeout: 240_000,
+    reuseExistingServer: !process.env.CI,
+    env,
   };
 }
 
@@ -42,13 +70,5 @@ export default defineConfig({
       use: { ...devices["Pixel 5"], viewport: { width: 390, height: 844 } },
     },
   ],
-  webServer: remoteBaseUrl
-    ? undefined
-    : {
-        command: `npm run build && npx next start -p ${localPort}`,
-        url: `http://127.0.0.1:${localPort}/api/health`,
-        timeout: 240_000,
-        reuseExistingServer: !process.env.CI,
-        env: localServerEnv(),
-      },
+  webServer: webServerConfig(),
 });

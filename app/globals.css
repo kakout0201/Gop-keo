@@ -47,7 +47,4 @@ body {
   line-height: var(--text-body--line-height);
 }
 
-/* Mọi số tiền dùng chữ số đều độ rộng (tokens.md). */
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
-}
+/* Số tiền: dùng tiện ích có sẵn `tabular-nums` của Tailwind (tokens.md). */

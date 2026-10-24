@@ -60,7 +60,7 @@ describe("I-13 ràng buộc schema", () => {
         await tx`insert into expense_shares (trip_id, expense_id, member_id, amount_vnd)
                  values (${trip.tripId}, ${id}, ${hung()}, 300000), (${trip.tripId}, ${id}, ${linh()}, 300001)`;
       }),
-    ).rejects.toMatchObject({ code: "23514" });
+    ).rejects.toMatchObject({ code: "23514", message: expect.stringContaining("shares sum") });
   });
 
   it("chặn lần chuyển cho chính mình", async () => {
@@ -69,6 +69,7 @@ describe("I-13 ràng buộc schema", () => {
       values (${trip.tripId}, ${hung()}, ${hung()}, 1000, 'sent', ${hung()})`).rejects.toMatchObject(
       {
         code: "23514",
+        constraint_name: "payments_check",
       },
     );
   });
@@ -79,6 +80,7 @@ describe("I-13 ràng buộc schema", () => {
       values (${hung()}, ${trip.tripId}, '970422', '000011112222', 'Nguyễn Văn Hùng', false)`).rejects.toMatchObject(
       {
         code: "23514",
+        constraint_name: "payout_accounts_account_name_check",
       },
     );
   });
@@ -110,6 +112,16 @@ describe("I-14 anon/authenticated không truy cập được bảng", () => {
     for (const row of rows) {
       expect(row, row.relname).toMatchObject({ rls: true, policies: 0 });
     }
+  });
+
+  it("anon và authenticated không có quyền select/insert/update/delete trên bảng nào", async () => {
+    const rows = await sql<{ role: string; tbl: string; priv: string; granted: boolean }[]>`
+      select r.role, t.tbl, p.priv, has_table_privilege(r.role, 'public.' || t.tbl, p.priv) as granted
+      from unnest(${["anon", "authenticated"]}::text[]) as r(role)
+      cross join unnest(${TABLES}::text[]) as t(tbl)
+      cross join unnest(${["select", "insert", "update", "delete"]}::text[]) as p(priv)`;
+    expect(rows).toHaveLength(2 * TABLES.length * 4);
+    expect(rows.filter((r) => r.granted)).toEqual([]);
   });
 
   it.each(TABLES)("REST bằng anon key bị từ chối đọc và ghi bảng %s", async (table) => {

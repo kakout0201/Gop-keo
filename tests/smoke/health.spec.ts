@@ -26,6 +26,6 @@ test.describe("@smoke", () => {
   test("link sai trả trang 404 tiếng Việt", async ({ request }) => {
     const res = await request.get("/khong-co-trang-nay");
     expect(res.status()).toBe(404);
-    expect(await res.text()).toContain("Không tìm thấy trang này");
+    expect(await res.text()).toContain("Không tìm thấy kèo này");
   });
 });

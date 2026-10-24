@@ -10,12 +10,13 @@ export default function Home() {
         </p>
       </div>
       <div className="flex flex-col gap-2">
-        <span
-          aria-disabled="true"
+        <button
+          type="button"
+          disabled
           className="flex h-14 w-full items-center justify-center rounded-full bg-primary text-[18px] font-extrabold text-on-primary opacity-60"
         >
           Tạo kèo
-        </span>
+        </button>
         <p className="text-center text-caption text-text-muted">Sắp có. App đang được xây dựng.</p>
       </div>
     </main>

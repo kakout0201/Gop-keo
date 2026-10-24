@@ -1,7 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 9 — Thiết lập repo**. Code đã tạo trên branch `chore/repo-setup` (chưa push).
-Đang chờ: (1) chủ dự án chọn email commit trước khi push (repo công khai); (2) chủ dự án tạo `.wslconfig` + bật Docker.
+Bước hiện tại: **Bước 9 — Thiết lập repo**, đã push, PR https://github.com/kakout0201/Gop-keo/pull/1
+(`chore/repo-setup` → `main`). Đang chờ: CI `check` xanh trên PR, rồi **chủ dự án cho phép merge**.
 Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "docs: add slice plans".
 
 ## Đã xong
@@ -79,15 +79,23 @@ Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "d
   - CLAUDE.md thêm luật kỹ thuật; `.claude/agents/` reviewer, test-writer, security-auditor; `.claude/commands/` slice, verify,
     ship; settings: thêm quyền npx cho vitest/tsc/prettier/supabase local, chặn đọc `.env*` mọi thư mục, force push,
     `db push`, `db reset --linked`.
+  - Email commit: đổi sang `270144864+kakout0201@users.noreply.github.com` (đặt `git config user.email` riêng repo), viết lại
+    tác giả + committer của cả 10 commit bằng `git filter-branch` **trước** lần push đầu; xóa `refs/original`; gỡ email cũ
+    khỏi STATUS. `git log --format='%ae' --all | sort -u` chỉ còn email noreply. gitleaks quét lại: không rò rỉ.
+  - Docker Desktop đã bật, `.wslconfig` (3 GB) đã tạo, `gh` 2.103.2 đã đăng nhập (chủ dự án làm).
+  - Push `main` (docs + .gitignore) và `chore/repo-setup`; tạo PR #1 bằng `gh`.
+  - Bật qua API: secret scanning, push protection, Dependabot alerts (đều xác nhận lại bằng API). Dependabot security
+    updates (tự mở PR vá) **chưa bật** vì không được yêu cầu.
+  - Branch protection `main`: bắt buộc PR (0 người duyệt, vì làm một mình), bắt buộc check `check` xanh và nhánh phải mới
+    nhất (strict), áp dụng cả admin, cấm force push và xóa nhánh.
   - Chưa: `supabase init` + cấu hình rút gọn (slice 00, cần Docker); Playwright + trình duyệt (slice 02b); không gọi subagent
     reviewer cho Bước 9 (chỉ cấu hình, đã tự kiểm `check` + build + gitleaks).
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
 ## Đang chờ chủ dự án — Bước 9
-- Email commit: đã chọn noreply GitHub; mọi commit được viết lại tác giả **trước** lần push đầu; repo đặt
-  `git config user.email` riêng. Docker Desktop đã bật, `.wslconfig` đã tạo, `gh` đã cài và đăng nhập.
-- Sau push: PR `chore/repo-setup` → `main`, bật bảo mật repo, branch protection; chờ CI `check` xanh rồi
-  **hỏi chủ dự án trước khi merge** (xem mục cập nhật cuối phiên).
+- CI job `check` trên PR #1 xanh (đang chạy lúc cập nhật này) → chủ dự án cho phép merge (merge = hành động ra ngoài, phải hỏi).
+- Sau merge: sang **Bước 10** — USER tạo Supabase project dev (cloud, cho preview Vercel), import repo vào Vercel,
+  nhập biến môi trường; AUTO làm slice 00 (Supabase local rút gọn qua Docker đã sẵn sàng).
 
 ## Quyết định Bước 9 (2026-10-24)
 | Q | Chốt |

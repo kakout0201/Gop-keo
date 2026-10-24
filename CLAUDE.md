@@ -34,6 +34,8 @@ Gom tất cả câu hỏi của một bước vào MỘT lần hỏi, mỗi câu
 ## Git
 - Không commit thẳng main sau khi repo đã có code (từ Bước 9). Mỗi slice một branch `slice/XX-ten-ngan`.
 - Message dạng: docs: ... / feat(scope): ... / fix(scope): ... / test(scope): ... / chore: ...
+- Không thêm Co-Authored-By, 'Generated with Claude Code' hay link session vào commit/PR. Repo chỉ đứng tên chủ dự án
+  (`.claude/settings.json` có `attribution` để rỗng).
 - Repo **công khai**: không commit tên thật, số TK, số điện thoại, ảnh chụp có dữ liệu thật. Dữ liệu mẫu dùng
   fixture trong `tests/fixtures/` (số TK giả 000011112222).
 

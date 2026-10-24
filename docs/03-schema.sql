@@ -1,5 +1,6 @@
 -- Góp Kèo v1 — schema Postgres (Supabase)
--- Trạng thái: Bước 7, đã chốt Q1–Q14, chờ GATE. Bước 9–10 chép thành supabase/migrations/0001_init.sql.
+-- Trạng thái: duyệt GATE Bước 7 + bổ sung GATE Bước 8 (money_version). Slice 00 chép thành
+-- supabase/migrations/<YYYYMMDDHHMMSS>_init.sql (tên theo chuẩn Supabase CLI).
 -- Quy ước:
 --   * Tiền: bigint, số nguyên VND, không bao giờ âm trong bảng (dấu do ngữ cảnh: trả / phần chia).
 --   * Thời gian: timestamptz (UTC), hiển thị giờ Việt Nam ở app.
@@ -32,6 +33,9 @@ create table public.trips (
   closed_date_option_id   uuid,             -- FK thêm bên dưới
   closed_place_option_id  uuid,             -- FK thêm bên dưới; null nếu kèo không có chỗ
   closed_at               timestamptz,
+  -- Tăng 1 mỗi khi khoản chi hoặc lần chuyển đổi (kiến trúc D10). app_mark_sent / app_mark_received kiểm lại
+  -- giá trị này bên trong hàm để remainingVnd do TS tính không bị cũ.
+  money_version           bigint not null default 0 check (money_version >= 0),
   created_at              timestamptz not null default now(),
   updated_at              timestamptz not null default now(),
   constraint trips_closed_consistent check (
@@ -356,10 +360,10 @@ alter default privileges in schema public revoke all on functions from anon, aut
 
 -- ---------------------------------------------------------------------------
 -- Ghi chú cho Bước 10
--- * Nhiều bước ghi (tạo kèo + thành viên + lựa chọn; sửa khoản chi + phần chia + sự kiện) phải nằm trong
---   MỘT giao dịch. supabase-js không có giao dịch nhiều câu => viết hàm SQL (plpgsql, không SECURITY
---   DEFINER, chỉ service_role được EXECUTE) cho các thao tác này, hoặc dùng kết nối Postgres trực tiếp
---   (postgres.js) ở server. Chốt ở kế hoạch slice (Bước 8).
+-- * Mọi thao tác ghi đi qua hàm SQL app_<việc> (kiến trúc D10, duyệt GATE Bước 8): security invoker,
+--   revoke execute from public/anon/authenticated, grant execute to service_role, khóa
+--   pg_advisory_xact_lock(hashtext(trip_id::text)) đầu hàm, kiểm lại điều kiện trạng thái trong hàm.
+--   Hàm nằm ở các migration riêng của từng slice, không ở file init.
 -- * Giới hạn 20 thành viên: kiểm ở server + check join_order <= 20 ở DB.
 -- * Giới hạn 200 khoản chi/kèo: kiểm ở server.
 -- ---------------------------------------------------------------------------

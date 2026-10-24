@@ -56,7 +56,9 @@ Thứ tự kiểm trong mọi action có `slug`:
 4. Mọi id trong input phải thuộc kèo này (truy vấn luôn lọc `trip_id`) → nếu không: `TRIP_NOT_FOUND`
    (không tiết lộ id có tồn tại ở kèo khác).
 5. Kiểm quyền bằng `lib/domain/permissions.ts` (hàm thuần, có unit test) → `NOT_MEMBER` / `FORBIDDEN`.
-6. Ghi trong một giao dịch, ghi `trip_events`, `revalidatePath(`/k/${slug}`, "layout")`.
+6. Gọi **một** hàm SQL `app_<việc>` (kiến trúc D10): hàm khóa theo kèo, **kiểm lại** quyền và mọi điều kiện trạng thái
+   (version khoản chi, `money_version`, giới hạn), ghi mọi bảng + `trip_events` trong một giao dịch, trả `{ok, code}`.
+   Rồi `revalidatePath(`/k/${slug}`, "layout")`.
 
 `ensureDevice()`: action nào cần danh tính mà chưa có cookie thì tạo thiết bị + đặt cookie (chỉ các action
 đánh dấu **(tạo cookie)**: `createTrip`, `claimMember`, `joinAsNewMember`). Trước khi tạo thiết bị mới gọi
@@ -74,6 +76,7 @@ type TripView = {
   trip: { slug: string; title: string; status: "voting" | "closed"; createdAt: string;
           closed?: { dateOptionId: string; placeOptionId: string | null; closedAt: string } };
   viewer: { memberId: string | null; isCreator: boolean };
+  moneyVersion: number;            // trips.money_version, gửi kèm markSent/markReceived (kiến trúc D10)
   members: { id: string; name: string; joinOrder: number; initials: string; colorIndex: number;
              hasVoted: boolean; hasPayoutAccount: boolean;
              isNew: boolean }[];   // vào kèo < 48 giờ và không phải người tạo → nhãn "mới" (PRD R1)
@@ -306,7 +309,9 @@ z.object({ slug: Slug, toMemberId: Id, kind: z.enum(["pay", "refund"]), expected
 ```
 Server tính lại kế hoạch; tìm dòng `from = tôi, to = toMemberId, kind` có `remainingVnd > 0`.
 Không có → `NOTHING_TO_PAY`. `remainingVnd ≠ expectedAmountVnd` → `STALE` (`details.current`).
-Ghi payment `method='sent'`, số tiền = `remainingVnd`. Event `payment_recorded`.
+Gọi `app_mark_sent(p_trip_id, ..., p_amount = remainingVnd, p_expected_money_version)`; hàm kiểm lại
+`trips.money_version` (khác → `STALE`), ghi payment `method='sent'`, tăng `money_version`. Event `payment_recorded`.
+Hai lệnh song song cho cùng dòng: chỉ một lệnh ghi (I-27).
 
 **`markReceived`** — US-19 [Q13] · người được nhận trên dòng
 ```ts

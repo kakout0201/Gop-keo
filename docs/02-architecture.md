@@ -123,6 +123,20 @@ Tính chất (có property test): tổng các dòng của mỗi người = số 
   payload không có số TK hay tên chủ TK.
 - Kiểm thời gian theo đồng hồ DB (`now()`), không theo giờ máy người dùng.
 
+### D10. Hàm SQL cho mọi thao tác ghi (duyệt ở GATE Bước 8, 2026-10-24)
+- Mỗi Server Action, sau khi kiểm Zod và tính toán bằng `lib/domain`, gọi **một** hàm `plpgsql` `app_<việc>` qua
+  `supabase.rpc`; hàm làm mọi lệnh ghi trong một giao dịch và trả `jsonb` `{ ok: true, ... }` hoặc `{ ok: false, code }`.
+- Mỗi hàm: `security invoker`, `set search_path = public`; `revoke execute on function ... from public, anon, authenticated;`
+  `grant execute on function ... to service_role;`.
+- Câu đầu tiên của mọi hàm ghi: `perform pg_advisory_xact_lock(hashtext(p_trip_id::text));` (tạo kèo và tạo thiết bị:
+  khóa theo khóa giới hạn tần suất). Mọi ghi vào cùng một kèo vì vậy chạy tuần tự.
+- **Kiểm lại trong hàm** mọi điều kiện phụ thuộc trạng thái, không tin kết quả server đã đọc trước đó: thành viên/quyền,
+  trạng thái kèo, giới hạn số lượng, `expenses.version`, và `trips.money_version` cho `markSent`/`markReceived`.
+- `trips.money_version` tăng 1 mỗi khi khoản chi hoặc lần chuyển thay đổi (tạo/sửa/xóa khoản, ghi/hoàn tác/hủy lần
+  chuyển). `remainingVnd` do TS tính (thuật toán D4) chỉ đúng với một `money_version`; hàm `app_mark_sent` /
+  `app_mark_received` nhận `p_expected_money_version` và trả `STALE` nếu đã khác, nên 2 lệnh song song không ghi 2 lần.
+- Migration tên theo chuẩn Supabase CLI `supabase/migrations/YYYYMMDDHHMMSS_ten.sql`, mỗi slice một file.
+
 ### D7. Cấu trúc thư mục (dự kiến, Bước 9 tạo)
 ```
 app/
@@ -147,7 +161,7 @@ lib/
   device.ts (cookie gk_device)
   schemas.ts (Zod)
 components/  theo tên trong tokens.md (Button, MoneyText, MemberAvatar, ...)
-supabase/migrations/  (từ 03-schema.sql)
+supabase/migrations/  YYYYMMDDHHMMSS_init.sql (từ 03-schema.sql), rồi mỗi slice một file hàm SQL
 tests/  unit/ integration/ e2e/
 ```
 

@@ -1,7 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 8 — Kế hoạch slice** (đang làm).
-Bước 7 đã DUYỆT (2026-10-24) kèm 4 sửa, đã làm, commit "docs: add specs".
+Bước hiện tại: **Bước 9 — Thiết lập repo**, đang ở **ASK** (4 câu bên dưới). Chưa tạo code nào.
+Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "docs: add slice plans".
 
 ## Đã xong
 - Bước 1: môi trường (Git, Node 22, VS Code, tài khoản GitHub/Vercel/Supabase). Repo nhánh `main`.
@@ -55,10 +55,27 @@ Bước 7 đã DUYỆT (2026-10-24) kèm 4 sửa, đã làm, commit "docs: add s
      đe dọa có thêm 2 dòng. Test I-24, I-25, AC-04.7, AC-04.9, AC-11.7.
   4. Giới hạn IP khi tạo thiết bị trong `ensureDevice()` (bucket `create_device:ip`, 30/giờ, 100/24h). Test I-26.
   Schema chạy lại trên PGlite: 27 kiểm đúng như mong đợi, 15 bảng, tất cả bật RLS.
+- GATE Bước 8 duyệt (2026-10-24), đồng ý dùng hàm SQL (`supabase.rpc`), kèm 4 điều chỉnh đã làm:
+  1. Quy ước hàm SQL (kiến trúc D10): revoke `public, anon, authenticated` + grant `service_role`; khóa
+     `pg_advisory_xact_lock(hashtext(trip_id))` đầu hàm; kiểm lại trong hàm version khoản chi và `trips.money_version`
+     (cột mới, tăng mỗi khi khoản chi/lần chuyển đổi — cách để kiểm lại `remainingVnd` trong hàm). Test I-27 (2 markSent
+     song song ghi 1 lần), I-28 (2 updateExpense song song → 1 STALE), I-29 (gọi hàm bằng anon key bị từ chối).
+  2. Tách slice 02 thành 02a (hạ tầng) và 02b (5 action + S1–S4); README, sơ đồ phụ thuộc cập nhật.
+  3. Migration tên `YYYYMMDDHHMMSS_ten.sql` (chuẩn Supabase CLI), kể cả init; mỗi slice một migration hàm SQL.
+  4. GATE slice 05: quét bằng app ngân hàng có sẵn (tối thiểu 1), ghi app chưa thử vào STATUS.
+  Schema chạy lại trên PGlite: 29 kiểm đúng như mong đợi.
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
-## Đang chờ chủ dự án
-- (Bước 8 đang làm — xem cuối phiên.)
+## Đang chờ chủ dự án — ASK Bước 9
+Trả lời `/next đồng ý hết` hoặc `/next Q2: ...` (câu không nhắc = đồng ý đề xuất).
+| Q | Câu hỏi | Đề xuất | Lý do ngắn |
+|---|---|---|---|
+| Q1 | Supabase cho phát triển + test: local bằng Docker (WSL2) hay project dev trên cloud? | **Local, bản rút gọn** (`supabase start -x` bỏ studio, storage, realtime, edge-runtime, logflare, vector, imgproxy… chỉ giữ Postgres + REST + gateway) cho code và test; project **dev trên cloud** chỉ cho bản preview Vercel (Bước 10). | Máy có Docker Desktop + WSL2 (đang tắt), RAM 7,7 GB: bản rút gọn chạy khoảng 1 GB; test integration/đồng thời reset DB thoải mái; migration chạy local không phải hỏi mỗi lần, chỉ `db push` lên cloud mới hỏi. Cần bật Docker Desktop và tải image lần đầu (~1–2 GB). |
+| Q2 | Code đầu tiên (Bước 9) commit ở đâu? (CLAUDE.md: từ Bước 9 không commit thẳng `main`) | Làm trên branch `chore/repo-setup`; lần push đầu đẩy `main` (chỉ có docs) + branch; bạn tạo PR và merge trên GitHub. | Đúng luật git của dự án ngay từ commit code đầu tiên. |
+| Q3 | Cài GitHub CLI (`gh`) để `/ship` tự push + tạo PR? Máy chưa có `gh`. | **Có.** Bạn tự chạy `winget install GitHub.cli` rồi `gh auth login` (đăng nhập là việc của bạn). Không có `gh` thì `/ship` chỉ push, bạn tạo PR trên web. | `/ship` và đọc kết quả CI cần `gh`. |
+| Q4 | Repo GitHub công khai hay riêng tư? | **Riêng tư.** Vercel Hobby và GitHub Actions vẫn dùng được. | Có tên thật, dữ liệu mẫu, kế hoạch bảo mật. |
+Mặc định không hỏi: Next.js bản ổn định mới nhất lúc khởi tạo (`create-next-app`, App Router, TypeScript, Tailwind,
+ESLint), npm, Node 22 sẵn có.
 
 ## Quyết định Bước 7 (Q1–Q14 — đã chốt theo đề xuất, 2026-10-24)
 | Q | Câu hỏi | Đã chốt | Lý do ngắn |

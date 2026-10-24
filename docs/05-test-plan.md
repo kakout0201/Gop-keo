@@ -99,6 +99,9 @@ Mỗi test tạo kèo riêng (slug ngẫu nhiên), không phụ thuộc thứ t�
 | I-12 | `getTripView`: người chưa chọn tên không có `accounts`, không có `me`; người đã chọn tên chỉ thấy TK của người trong `me.toPay` [Q4]; không trường nào chứa token/device id |
 | I-13 | Schema: chèn trực tiếp sai tổng phần chia / tự chuyển cho mình / tên TK có dấu → DB báo lỗi |
 | I-14 | Dùng **anon key** gọi REST Supabase vào mọi bảng → bị từ chối (RLS + revoke) |
+| I-27 | **Đồng thời markSent:** 2 lệnh `markSent` song song cho cùng dòng Khoa → Hùng → đúng 1 payment được ghi; lệnh kia `STALE` (hoặc `NOTHING_TO_PAY`); `money_version` tăng đúng 1 |
+| I-28 | **Đồng thời updateExpense:** 2 lệnh `updateExpense` song song cùng `expectedVersion` → đúng 1 thành công, 1 `STALE`; `expense_shares` khớp bản thắng |
+| I-29 | **Quyền hàm SQL:** liệt kê mọi hàm schema `public` (`pg_proc`), gọi `rpc` bằng anon key → tất cả bị từ chối; `has_function_privilege('anon'/'authenticated', f, 'execute')` = false; `service_role` = true |
 | I-15 | Ca P11 đầy đủ qua action: tạo 3 khoản (Bia chia 6) → Mai `markSent` → Tuấn `updateExpense` (chia 5) → `getTripView` của Mai có `unseenChanges` đúng số và dòng hoàn lại 100.000 → `markChangesSeen` → banner mất |
 | I-16 | **R12a:** máy B `claimMember` vào Hùng (đã xác nhận máy mới) → `savePayoutAccount` và `deletePayoutAccount` → `FORBIDDEN` `NEW_DEVICE_COOLDOWN` đúng câu PRD, `payout_accounts` không đổi. Giả lập 24 giờ sau (đặt `member_devices.created_at` lùi 24h) → được. Máy A (`created`) → được ngay |
 | I-17 | **R12a, ca "đổi":** máy A của Hùng `releaseClaim` → máy B chọn Hùng (không bị hỏi xác nhận vì tên không còn máy) → vẫn `NEW_DEVICE_COOLDOWN` |
@@ -172,14 +175,14 @@ so pixel tự động vì dữ liệu/thời gian khác nhau.
 - I-11, I-12, I-14 xanh. Thử XSS: tên `<img src=x onerror=alert(1)>` hiện đúng chữ, không chạy.
 - Link chỗ `javascript:`/`http:` bị từ chối.
 - Log server không chứa số TK, IP, token (grep log của test integration với chuỗi IP/số TK dùng trong test).
-- Ma trận §3b xanh; I-16..I-26 xanh.
+- Ma trận §3b xanh; I-16..I-29 xanh.
 
 ## 6. Thủ công trên thiết bị thật (Bước 11–16 GATE, Bước 18)
 | # | Việc | Thiết bị |
 |---|---|---|
 | M-1 | Mở link trong Zalo (Android tầm trung, iPhone) → thấy kèo ≤ 3 s qua 4G | 2 máy |
 | M-2 | "Lưu ảnh QR" trong trình duyệt Zalo: có tải được không; nếu không, chạm giữ ảnh có lưu được không | Android + iOS |
-| M-3 | Mở app ngân hàng → Quét mã → chọn ảnh vừa lưu → điền đúng số TK, tên, số tiền, nội dung | ≥ 3 app ngân hàng khác nhau |
+| M-3 | Mở app ngân hàng → Quét mã → chọn ảnh vừa lưu → điền đúng số TK, tên, số tiền, nội dung | các app ngân hàng có sẵn (tối thiểu 1); ghi app chưa thử vào STATUS |
 | M-4 | Quét thẳng QR từ máy thứ hai | 1 app |
 | M-5 | Copy số tiền dán vào app ngân hàng ra đúng "870000" | 2 app |
 | M-6 | Copy tin nhắc, dán vào Zalo: xuống dòng, dấu tiếng Việt, link bấm được | Zalo |

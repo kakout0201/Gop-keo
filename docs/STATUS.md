@@ -88,14 +88,20 @@ Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "d
     updates (tự mở PR vá) **chưa bật** vì không được yêu cầu.
   - Branch protection `main`: bắt buộc PR (0 người duyệt, vì làm một mình), bắt buộc check `check` xanh và nhánh phải mới
     nhất (strict), áp dụng cả admin, cấm force push và xóa nhánh.
+  - Bỏ ghi công AI (yêu cầu chủ dự án): `.claude/settings.json` có `"attribution": {"commit": "", "pr": "", "sessionUrl": false}`
+    (khóa kiểm theo tài liệu settings của Claude Code); CLAUDE.md mục Git + lệnh `/ship` cấm dòng Co-Authored-By / Generated with.
+    Viết lại message 11 commit cũ bằng `git filter-branch --msg-filter` (giữ tác giả noreply và thời gian); grep trên `main` +
+    `chore/repo-setup` rỗng. Mô tả PR #1 đã bỏ dòng "Generated with Claude Code". gitleaks quét lại: không rò rỉ.
+    **Chưa force push:** luật `deny` `git push --force-with-lease` trong `.claude/settings.json` chặn Claude; GitHub vẫn giữ
+    lịch sử cũ cho tới khi chủ dự án chạy script force push (hoặc cho phép bỏ luật deny).
   - Chưa: `supabase init` + cấu hình rút gọn (slice 00, cần Docker); Playwright + trình duyệt (slice 02b); không gọi subagent
     reviewer cho Bước 9 (chỉ cấu hình, đã tự kiểm `check` + build + gitleaks).
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
 ## Đang chờ chủ dự án — Bước 9
-- CI job `check` trên PR #1 xanh (đang chạy lúc cập nhật này) → chủ dự án cho phép merge (merge = hành động ra ngoài, phải hỏi).
-- Sau merge: sang **Bước 10** — USER tạo Supabase project dev (cloud, cho preview Vercel), import repo vào Vercel,
-  nhập biến môi trường; AUTO làm slice 00 (Supabase local rút gọn qua Docker đã sẵn sàng).
+- Force push lịch sử đã viết lại (bỏ dòng ghi công AI) lên `main` và `chore/repo-setup`: Claude bị luật deny chặn. Chủ dự án
+  chạy script `force-push-rewrite.ps1` (mở protection vài giây, push with lease, bật lại, đọc lại) hoặc cho phép Claude làm.
+- Sau đó: CI `check` xanh trên PR #1 → chủ dự án cho phép merge → Bước 10.
 
 ## Quyết định Bước 9 (2026-10-24)
 | Q | Chốt |

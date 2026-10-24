@@ -1,0 +1,10 @@
+# Tài liệu viết tay và mã nguồn canvas giữ nguyên định dạng
+docs/
+CLAUDE.md
+README.md
+AGENTS.md
+.claude/
+package-lock.json
+.next/
+coverage/
+supabase/.temp/

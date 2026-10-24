@@ -1,9 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 7 — Đặc tả** (chưa bắt đầu; làm ở session mới)
-Trạng thái: Bước 6 đã DUYỆT (2026-10-24). Session tiếp theo: đọc file này, docs/00-brief.md,
-docs/design/screens/README.md, docs/design/tokens.md, docs/design/decisions.md rồi làm Bước 7 theo PLAYBOOK
-(plan mode, chưa code).
+Bước hiện tại: **Bước 8 — Kế hoạch slice** (đang làm).
+Bước 7 đã DUYỆT (2026-10-24) kèm 4 sửa, đã làm, commit "docs: add specs".
 
 ## Đã xong
 - Bước 1: môi trường (Git, Node 22, VS Code, tài khoản GitHub/Vercel/Supabase). Repo nhánh `main`.
@@ -36,14 +34,49 @@ docs/design/screens/README.md, docs/design/tokens.md, docs/design/decisions.md r
   - Đã export lại PNG, amend vào commit "docs: add design".
 - .claude/commands/next.md: thêm bước 8 "Quản lý context". PLAYBOOK Bước 18, 20: thêm kiểm chứng
   8 giả định với người dùng thật.
+- Bước 7 (2026-10-24): viết 6 file đặc tả; ASK Q1–Q14 → chủ dự án **đồng ý tất cả đề xuất** và thêm 5 điểm:
+  1. Chống chiếm TK nhận tiền (PRD R12, US-23; kiến trúc D9): máy gắn vào tên có sẵn đợi 24 giờ mới lưu/xóa TK
+     (mình mở rộng từ "chỉ khi xác nhận máy mới" sang "mọi lần gắn vào tên có sẵn" để chặn ca bấm "đổi" rồi
+     máy lạ chọn tên — ghi lý do trong PRD R12); TK đổi trong 48 giờ → cảnh báo ở S10; lưu/xóa TK hiện trong hoạt động.
+  2. Giới hạn theo IP (kiến trúc D8): `x-real-ip` → đầu `x-forwarded-for` → "local"; IPv6 /64; HMAC-SHA256 với
+     biến mới `IP_HASH_SECRET`; createTrip 10/giờ + 50/24h, joinAsNewMember 30/giờ; bảng `rate_limit_hits`, xóa sau 7 ngày.
+  3. "Chưa nhận được" (US-21): action `disputePayment`, `payments.void_reason='disputed'`, event `payment_disputed`.
+  4. Giải thích gộp nợ ở S10 (US-22): dòng "App đã gộp các khoản… · Xem chi tiết", `me.breakdown` trong TripView.
+     Prototype P11 trên canvas đã sửa: Mai được **Hùng** hoàn lại (canvas version 60); PNG ở screens/ và
+     prototype/ xuất lại, mã nguồn canvas-source/proto/P11 cập nhật.
+  5. Test plan §3b: ma trận gọi thật mọi action × {ngoài kèo, thành viên không đủ quyền, đủ quyền}; I-16..I-22.
+- GATE Bước 7 duyệt (2026-10-24) kèm 4 sửa từ rà độc lập bên ngoài (thay cho subagent bị dừng), đã làm, không GATE lại:
+  1. Câu NEW_DEVICE_COOLDOWN: "Máy mới cần đợi 24 giờ mới được đổi tài khoản nhận tiền. Bạn dùng máy cũ, hoặc quay
+     lại sau {giờ}." (bỏ "nhờ người tạo kèo" vì người tạo không có quyền).
+  2. `payout_accounts.saved_by_device_id` + `saved_from_claimed_device`; cảnh báo S10 (`recentWarning`) khi TK đổi
+     < 48h **hoặc** được lưu < 48h từ máy `claimed` (kể cả lần nhập đầu). Test I-23, AC-23.6.
+  3. Chống khoản chi giả: `nameKey` chỉ giữ a–z 0–9 (bỏ dấu câu, ký hiệu, emoji, khoảng trắng); banner R10 báo cả
+     khoản **mới** do người khác ghi (`unseenChanges`); nhãn "mới" cho thành viên < 48h (trừ người tạo). Bảng mối
+     đe dọa có thêm 2 dòng. Test I-24, I-25, AC-04.7, AC-04.9, AC-11.7.
+  4. Giới hạn IP khi tạo thiết bị trong `ensureDevice()` (bucket `create_device:ip`, 30/giờ, 100/24h). Test I-26.
+  Schema chạy lại trên PGlite: 27 kiểm đúng như mong đợi, 15 bảng, tất cả bật RLS.
+- PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
 ## Đang chờ chủ dự án
-- Chủ dự án mở **session mới** và gõ `/next` để bắt đầu Bước 7.
-- Bước 7 cần làm (theo PLAYBOOK): plan mode, viết docs/01-prd.md, 02-architecture.md, 03-schema.sql
-  (bảng, index, RLS), 04-contracts.md (server action + Zod), 05-test-plan.md, 06-acceptance.md
-  (Given/When/Then); tiền là số nguyên VND. Sau đó ASK gom mọi điểm mơ hồ (bắt đầu từ mục
-  "Điểm mở cho Bước 7" bên dưới, mỗi điểm kèm phương án đề xuất), rồi GATE duyệt từng file.
-- Màn hình nguồn cho spec: docs/design/screens/ (P01–P21; P00 Demo và nút "Đổi vai" không thuộc sản phẩm).
+- (Bước 8 đang làm — xem cuối phiên.)
+
+## Quyết định Bước 7 (Q1–Q14 — đã chốt theo đề xuất, 2026-10-24)
+| Q | Câu hỏi | Đã chốt | Lý do ngắn |
+|---|---|---|---|
+| Q1 | Làm tròn khi chia lẻ (E7) | Chia hết thì chia đều; không thì làm tròn đến 1.000 ₫, người trả chịu phần chênh (người trả không trong danh sách → người vào kèo sớm nhất trong danh sách). Mỗi phần < 1.000 ₫ thì chia đến đồng. Câu S7: "Chia lẻ nên làm tròn đến 1.000 ₫: 86.000 ₫ mỗi người, riêng Tuấn (người trả) 84.000 ₫." | Số tròn dễ chuyển; chênh chỉ vài nghìn, ghi rõ con số thay vì nêu quy tắc |
+| Q2 | Gộp nợ hay chuyển riêng | Gộp nợ: mỗi người nợ chuyển cho ít người nhất (thường 1); thuật toán ổn định, đánh dấu đã trả không làm đổi dòng khác (PRD R5). Dữ liệu mẫu ra đúng 6 lần chuyển như prototype | Ít lần quét QR (rủi ro brief); prototype đã giả định |
+| Q3 | Ai sửa/xóa được khoản chi | Người ghi khoản, người trả khoản, người tạo kèo. Mọi sửa đều có lịch sử trước/sau | Đủ linh hoạt, hạn chế sửa bậy |
+| Q4 | Số TK hiện cho ai (G4, E9) | Chỉ người đã chọn tên trong kèo (và chỉ TK của người mình cần chuyển). Câu S9: "Chỉ người trong nhóm đã chọn tên mới thấy số tài khoản này. Bạn xóa được bất cứ lúc nào." | Bớt lộ khi link bị chuyển tiếp; bớt ngần ngại (giả định 5) |
+| Q5 | Trùng tên / đổi máy (G3) | Tên đã có máy khác vẫn chọn được nhưng hỏi lại; đồng ý thì cả 2 máy là người đó, cả nhóm thấy dòng "X vừa mở kèo trên một máy khác". Gõ tên trùng → "Bạn là X này à?" | Người lớn tuổi hay đổi máy/xóa dữ liệu; minh bạch thay cho khóa |
+| Q6 | Sửa khoản sau khi đã có người trả (E10) | Người nhận thừa hoàn lại đúng người đã chuyển cho mình; hiện như một dòng nợ "Hoàn lại cho Mai 100.000 ₫" có QR | Đơn giản, đúng với tiền đã đi |
+| Q7 | Mở lại vote sau khi chốt | Có, chỉ người tạo; phiếu cũ giữ nguyên | Lịch hay đổi phút chót |
+| Q8 | Chỉ số "≥ 5/6 trả trong 48 giờ" | ≥ 80% số lần chuyển đã đánh dấu trong 48 giờ (từ lúc có TK + khoản chi cuối) | Áp dụng được cho nhóm cỡ bất kỳ |
+| Q9 | Chấm đỏ tab Trả tiền khi được nợ mà chưa nhập TK (G11) | Có | Không có TK thì không ai trả được |
+| Q10 | Nhóm > 7 người | Tối đa 20 người/kèo; màu avatar lặp lại theo thứ tự vào kèo | Đủ cho nhóm bạn/gia đình; chống spam |
+| Q11 | Nội dung chuyển khoản | `GOPKEO <mã kèo> <TÊN>`, IN HOA không dấu, ≤ 25 ký tự; mã kèo = chữ đầu 3 từ đầu ("VT2"). Vd "GOPKEO VT2 KHOA" | 25 ký tự là mức an toàn cho mọi ngân hàng (chưa kiểm) |
+| Q12 | Kiến trúc dữ liệu (liên quan khóa bí mật) | Chỉ server truy cập DB bằng **service role key** (chỉ trên Vercel + .env.local); RLS bật, không policy; danh tính bằng cookie thiết bị. **Bỏ** "bật auth ẩn danh" ở Bước 19 | Luật quyền ở 1 chỗ, test được; trang nhanh hơn; không lộ anon key |
+| Q13 | Người được nợ tự đánh dấu "Đã nhận" (trả tiền mặt) | Có (Should), hoàn tác được | Mẹ/người lớn tuổi hay đưa tiền mặt |
+| Q14 | Phạm vi v1 | Không làm: chia không đều, deeplink mở app ngân hàng (chưa tìm được tài liệu chính thức), xóa kèo, trả một phần | Giữ v1 nhỏ |
 
 ## 8 giả định của brief: tất cả CHƯA KIỂM CHỨNG
 Đánh giá chuyên gia không thay được người thật. Kế hoạch: kiểm ở **Bước 18** (kịch bản bug bash,
@@ -82,7 +115,25 @@ người thật, điện thoại thật, trong Zalo) và **Bước 20** (phiếu
 - Bước 5 thay test người thật bằng đánh giá chuyên gia; kiểm chứng thật dời sang Bước 18, 20.
 - Dữ liệu mẫu: cuối tuần 14–15, 21–22, 28–29/11/2026.
 
-## Điểm mở cho Bước 7 (đặc tả)
+## Bước 7 — chưa kiểm chứng
+- Schema đã chạy thử trên Postgres thật (PGlite, ngoài repo): tạo bảng OK, 7 ràng buộc chặn đúng ca sai,
+  anon/authenticated không có quyền, mọi bảng bật RLS. **Chưa** chạy trên Supabase thật.
+- Thuật toán chia/kế hoạch chuyển chạy thử bằng script node (ngoài repo) trên dữ liệu mẫu: ra đúng 6 lần
+  chuyển như prototype, đánh dấu đã trả không đổi dòng khác. Chưa có property test (để Bước 10).
+- Schema sau 5 bổ sung chạy lại trên PGlite: thêm 6 kiểm (void_reason, disputed chỉ bởi người nhận, claimed_via,
+  rate_limit_hits) đều đúng; 15/15 bảng bật RLS.
+- Rà chéo bằng subagent trong phiên bị dừng 2 lần; chủ dự án thay bằng rà độc lập ở chat bên ngoài (4 sửa ở trên).
+- Nhãn "mới" < 48h: trong kèo vừa tạo, gần như mọi người đều có nhãn trong 2 ngày đầu (lúc vote) — có thể gây
+  nhiễu; xem lại ở bug bash Bước 18.
+- `nameKey` bỏ khoảng trắng nên "Tuấn Anh" = "tuananh" = "Tu Ấn Anh"; hai người tên ghép khác nhau nhưng trùng chữ
+  sẽ bị coi là trùng (hiếm, chấp nhận; người sau thêm số/chữ để phân biệt).
+- Quy tắc 24 giờ (R12) cũng khóa chính chủ khi mất cookie hoặc tự bấm "đổi" rồi chọn lại tên — đánh đổi có chủ đích.
+- Ai chọn tên người tạo kèo có ngay quyền người tạo (chốt, sửa mọi khoản) — chấp nhận ở v1, ghi ở kiến trúc §7.
+- Prototype chưa vẽ: dòng gộp nợ + sheet chi tiết (US-22), cảnh báo đổi TK (R12), nút "Chưa nhận được" (US-21).
+- Cách lấy IP trên Vercel (`x-real-ip`/`x-forwarded-for` do nền tảng đặt) theo hiểu biết, chưa thử trên deploy thật.
+- Deeplink app ngân hàng: tìm nhanh không thấy tài liệu chính thức.
+
+## Điểm mở cũ (đã chốt qua Q1–Q14)
 - Quy tắc làm tròn khi chia số lẻ. **E7:** phải thay dòng giữ chỗ ở S7 bằng câu thật trước Bước 10.
 - Gộp nợ hay chuyển riêng cho từng người ứng tiền.
 - G4 · Bảo vệ link: ai có link được sửa gì; số TK hiện cho ai. **E9:** dòng "Ai mở link… đều thấy số
@@ -100,7 +151,7 @@ người thật, điện thoại thật, trong Zalo) và **Bước 20** (phiếu
 - Tìm hiểu deeplink mở thẳng app ngân hàng (VietQR/ngân hàng có hỗ trợ không), chưa kiểm chứng.
 
 ## Ghi chú cho Bước 10 (code)
-- **E7:** thay "[quy tắc làm tròn — chốt ở Bước 7]" ở S7 bằng câu thật.
+- **E7:** thay "[quy tắc làm tròn — chốt ở Bước 7]" ở S7 bằng câu theo PRD R3 (vd "Chia lẻ nên làm tròn đến 1.000 ₫: 86.000 ₫ mỗi người, riêng Tuấn (người trả) 84.000 ₫.").
 - **E8:** nút "Đổi vai" và màn Demo chỉ có trong prototype; không code, không đưa vào spec.
 - E1: "Lưu ảnh QR" phải chạy được trong trình duyệt Zalo; nếu không lưu được thì có phương án
   chạm giữ ảnh. Nút copy số tiền nên copy dạng số trơn (870000) cho app ngân hàng.

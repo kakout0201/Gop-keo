@@ -66,7 +66,8 @@ Git, Node 22, VS Code, app Claude (tab Code), tài khoản GitHub/Vercel/Supabas
 - USER: tạo repo trống trên GitHub, đưa URL. ASK: xin phép push lần đầu.
 
 ## Bước 10 — Slice 00 (walking skeleton)
-- USER: tạo Supabase project dev; import repo vào Vercel; nhập biến môi trường
+- USER: tạo Supabase project dev; import repo vào Vercel; nhập biến môi trường (SUPABASE_URL,
+  SUPABASE_SERVICE_ROLE_KEY, IP_HASH_SECRET, APP_URL — xem 02-architecture §4)
   trên Vercel và vào .env.local (Claude không đọc file này).
 - AUTO: làm slice 00 theo /slice 00.
 - GATE: trang chủ và /api/health chạy trên link Vercel.
@@ -92,7 +93,7 @@ Slice 03 và 04 chạy song song được (git worktree hoặc 2 session).
 
 ## Bước 19 — Deploy production
 - AUTO: soạn checklist deploy cụ thể + release notes v1.0.0.
-- USER: tạo Supabase prod (Singapore), `supabase db push`, bật auth ẩn danh,
+- USER: tạo Supabase prod (Singapore), `supabase db push` (không cần bật auth ẩn danh — Q12),
   env Production trên Vercel, domain.
 - AUTO: smoke test @smoke vào URL production, đọc kết quả.
 - GATE: smoke xanh, log sạch 10 phút.

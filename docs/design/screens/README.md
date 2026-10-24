@@ -20,7 +20,7 @@ Màn "Demo" và nút "Đổi vai" chỉ dùng để chuyển vai khi xem prototy
 | S6 | P08-s6-hung.png | Tab Kèo, đã chốt, chưa có chi tiêu | Thẻ ghim + trạng thái trống |
 | S7 | P09-s7-them-chi.png | Thêm khoản chi | Chia cho ai, dòng làm tròn giữ chỗ (E7) |
 | S8 | P10-s8-hung.png | Tab Chi tiêu | Số dư từng người |
-| S8 | P11-s8-mai-sua.png | Chi tiêu sau khi sửa khoản | Trước/sau, hoàn tiền (E6, E10) |
+| S8 | P11-s8-mai-sua.png | Chi tiêu sau khi sửa khoản | Trước/sau, hoàn tiền (E6, E10). Sửa 2026-10-24: Mai được **Hùng** hoàn lại (đúng thuật toán R5) |
 | S6 | P12-s6-khoa.png | Tab Kèo, người nợ | Nút "Trả 870.000 ₫ cho Hùng" |
 | S10 | P13-s10-khoa.png | Tab Trả tiền, mình nợ | Lưu ảnh QR, 3 bước + ghi chú "máy thứ hai"; bảng Ngân hàng / Chủ TK / Số TK / Số tiền / Nội dung, copy 3 dòng cuối (E1) |
 | S10 | P14-s10-da-chuyen.png | Đã đánh dấu chuyển | Có hoàn tác |

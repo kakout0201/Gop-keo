@@ -1,8 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 9 — Thiết lập repo**, đã push, PR https://github.com/kakout0201/Gop-keo/pull/1
-(`chore/repo-setup` → `main`). Đang chờ: CI `check` xanh trên PR, rồi **chủ dự án cho phép merge**.
-Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "docs: add slice plans".
+Bước hiện tại: **Bước 9 — Thiết lập repo**. Repo GitHub đã tạo lại (cách C), đã push, PR mới
+https://github.com/kakout0201/Gop-keo/pull/1 (`chore/repo-setup` → `main`). Đang chờ: CI `check` xanh rồi **chủ dự án cho phép merge**.
 
 ## Đã xong
 - Bước 1: môi trường (Git, Node 22, VS Code, tài khoản GitHub/Vercel/Supabase). Repo nhánh `main`.
@@ -92,18 +91,20 @@ Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "d
     (khóa kiểm theo tài liệu settings của Claude Code); CLAUDE.md mục Git + lệnh `/ship` cấm dòng Co-Authored-By / Generated with.
     Viết lại message 11 commit cũ bằng `git filter-branch --msg-filter` (giữ tác giả noreply và thời gian); grep trên `main` +
     `chore/repo-setup` rỗng. Mô tả PR #1 đã bỏ dòng "Generated with Claude Code". gitleaks quét lại: không rò rỉ.
-    **Chưa force push:** luật `deny` `git push --force-with-lease` trong `.claude/settings.json` chặn Claude; GitHub vẫn giữ
-    lịch sử cũ cho tới khi chủ dự án chạy script force push (hoặc cho phép bỏ luật deny).
+    Force push bị luật `deny` chặn (giữ nguyên luật) → chủ dự án chọn **cách C** (2026-10-25): xóa repo GitHub, tạo lại repo
+    trống cùng tên (id mới 1432405613). `git fetch --prune` xóa `origin/*` cũ; push thường `main` + `chore/repo-setup`;
+    `git log --all --format=%B | grep -iE "co-authored|claude-session|generated with"` rỗng; email chỉ còn noreply.
+    Bật lại secret scanning, push protection, Dependabot alerts, branch protection `main` (PR, 0 người duyệt, check `check`,
+    strict, enforce admins, cấm force push/xóa) — đọc lại bằng API khớp. PR mới #1, mô tả không có dòng ghi công.
+    Script `force-push-rewrite.ps1` trong scratchpad đã xóa. CLAUDE.md mục Bài học: đặt attribution từ đầu dự án.
   - Chưa: `supabase init` + cấu hình rút gọn (slice 00, cần Docker); Playwright + trình duyệt (slice 02b); không gọi subagent
     reviewer cho Bước 9 (chỉ cấu hình, đã tự kiểm `check` + build + gitleaks).
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
 ## Đang chờ chủ dự án — Bước 9
-- Chủ dự án chọn **cách C**: xóa repo GitHub, tạo lại repo trống cùng tên, push thường (không force push, giữ luật deny).
-- Kiểm 2026-10-25: repo `kakout0201/Gop-keo` **vẫn là repo cũ** (id 1432353577, tạo 2026-10-24 16:05 UTC, còn `main`,
-  `chore/repo-setup`, PR #1 mở). Đã dừng theo điều kiện 1, không push gì. Chờ chủ dự án xóa repo rồi tạo lại.
-- Sau đó: ls-remote trống → prune `origin/*` → push `main` + `chore/repo-setup` → bật lại bảo mật + branch protection →
-  PR mới → CI xanh → hỏi merge → Bước 10.
+- CI `check` trên PR #1 (repo mới) xanh → chủ dự án cho phép merge (merge = hành động ra ngoài, phải hỏi).
+- Sau merge: **Bước 10** — USER tạo Supabase project dev (cloud, cho preview Vercel), import repo vào Vercel, nhập biến môi
+  trường; AUTO làm slice 00 (Supabase local rút gọn qua Docker đã sẵn sàng).
 
 ## Quyết định Bước 9 (2026-10-24)
 | Q | Chốt |

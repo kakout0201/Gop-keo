@@ -61,4 +61,4 @@ Nguồn đúng: docs/01-prd.md … docs/06-acceptance.md và docs/plans/slice-XX
 - **Next.js 16** khác kiến thức cũ: đọc `node_modules/next/dist/docs/` khi dùng API lạ (xem AGENTS.md).
 
 ## Bài học (cập nhật sau mỗi bước/slice)
-- (trống)
+- Đặt attribution trong settings từ đầu dự án, trước commit đầu tiên.

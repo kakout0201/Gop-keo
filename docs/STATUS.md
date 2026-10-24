@@ -104,16 +104,12 @@ Bước hiện tại: **Bước 10 — Slice 00**, code xong ở máy trên bran
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
 ## Đang chờ chủ dự án — Bước 10
-1. **USER — đưa schema lên DB dev** (Claude bị luật deny chặn `db push`, và lệnh cần đăng nhập + mật khẩu DB):
-   `npx supabase login` → `npx supabase link --project-ref tjzlluomausmjgzlsmjs` (nhập mật khẩu DB) → `npx supabase db push`
-   (xác nhận áp `20261024173758_init.sql`).
-2. **ASK — push `slice/00-skeleton` + tạo PR** vào `main`; CI xanh → merge → Vercel production deploy →
-   `BASE_URL=https://gopkeo.vercel.app npm run test:smoke` → **GATE Bước 10**: trang chủ + `/api/health` trên link Vercel.
-3. **ASK — 2 điểm lệch kế hoạch slice 00:**
-   - Helper integration "gọi Server Action với cookie + `x-real-ip` giả" dời sang **slice 02a** (cookie thiết bị, `lib/ip.ts`
-     thuộc 02a; chưa có action nào để gọi).
-   - `.env.example` chưa tạo: công cụ ghi file bị luật deny `Read(./**/.env.*)` chặn. Chủ dự án tự tạo (nội dung trong tin
-     nhắn phiên 2026-10-25) hoặc cho phép Claude.
+- Chủ dự án đã `db push` lên DB dev (chỉ `20261024173758_init.sql`), đã tạo `.env.example` (Claude commit không đọc nội dung;
+  gitleaks quét: không rò rỉ), đồng ý dời helper gọi Server Action sang slice 02a, cho phép push `slice/00-skeleton` + tạo PR.
+- Đang chờ: CI `check` xanh trên PR slice 00 → **hỏi chủ dự án trước khi merge** → sau merge chạy
+  `BASE_URL=https://gopkeo.vercel.app npm run test:smoke` → **GATE Bước 10**.
+- Đã ghi vào slice-02a: helper `action.ts`; job CI `integration` (`supabase start` + `npm run test:int` trên GitHub Actions);
+  sau khi 02a merge, thêm `integration` vào required status checks của `main` (hỏi trước).
 
 ## Slice 00 — đã làm (2026-10-25, branch `slice/00-skeleton`)
 - `supabase init`; local rút gọn: tắt realtime, storage, studio, edge runtime, analytics, smtp, GraphQL; giữ db + REST +

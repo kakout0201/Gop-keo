@@ -99,9 +99,11 @@ Bước 8 đã DUYỆT (2026-10-24) kèm 4 điều chỉnh, đã làm, commit "d
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
 ## Đang chờ chủ dự án — Bước 9
-- Force push lịch sử đã viết lại (bỏ dòng ghi công AI) lên `main` và `chore/repo-setup`: Claude bị luật deny chặn. Chủ dự án
-  chạy script `force-push-rewrite.ps1` (mở protection vài giây, push with lease, bật lại, đọc lại) hoặc cho phép Claude làm.
-- Sau đó: CI `check` xanh trên PR #1 → chủ dự án cho phép merge → Bước 10.
+- Chủ dự án chọn **cách C**: xóa repo GitHub, tạo lại repo trống cùng tên, push thường (không force push, giữ luật deny).
+- Kiểm 2026-10-25: repo `kakout0201/Gop-keo` **vẫn là repo cũ** (id 1432353577, tạo 2026-10-24 16:05 UTC, còn `main`,
+  `chore/repo-setup`, PR #1 mở). Đã dừng theo điều kiện 1, không push gì. Chờ chủ dự án xóa repo rồi tạo lại.
+- Sau đó: ls-remote trống → prune `origin/*` → push `main` + `chore/repo-setup` → bật lại bảo mật + branch protection →
+  PR mới → CI xanh → hỏi merge → Bước 10.
 
 ## Quyết định Bước 9 (2026-10-24)
 | Q | Chốt |

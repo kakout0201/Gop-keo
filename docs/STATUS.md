@@ -1,7 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 9 — Thiết lập repo**. Repo GitHub đã tạo lại (cách C), đã push, PR mới
-https://github.com/kakout0201/Gop-keo/pull/1 (`chore/repo-setup` → `main`). Đang chờ: CI `check` xanh rồi **chủ dự án cho phép merge**.
+Bước hiện tại: **Bước 10 — Slice 00**, code xong ở máy trên branch `slice/00-skeleton` (chưa push).
+Đang chờ chủ dự án: (1) tự chạy `supabase link` + `db push` lên DB dev; (2) cho phép push branch + tạo PR; (3) quyết 2 điểm lệch kế hoạch.
 
 ## Đã xong
 - Bước 1: môi trường (Git, Node 22, VS Code, tài khoản GitHub/Vercel/Supabase). Repo nhánh `main`.
@@ -99,12 +99,37 @@ https://github.com/kakout0201/Gop-keo/pull/1 (`chore/repo-setup` → `main`). Đ
     Script `force-push-rewrite.ps1` trong scratchpad đã xóa. CLAUDE.md mục Bài học: đặt attribution từ đầu dự án.
   - Chưa: `supabase init` + cấu hình rút gọn (slice 00, cần Docker); Playwright + trình duyệt (slice 02b); không gọi subagent
     reviewer cho Bước 9 (chỉ cấu hình, đã tự kiểm `check` + build + gitleaks).
+- Bước 9 kết thúc (2026-10-25): CI `check` xanh trên commit 116739c; chủ dự án cho phép; merge PR #1 bằng merge commit
+  (tác giả email noreply, không dòng ghi công). Nhánh `chore/repo-setup` vẫn còn trên GitHub (chưa xóa).
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
-## Đang chờ chủ dự án — Bước 9
-- CI `check` trên PR #1 (repo mới) xanh → chủ dự án cho phép merge (merge = hành động ra ngoài, phải hỏi).
-- Sau merge: **Bước 10** — USER tạo Supabase project dev (cloud, cho preview Vercel), import repo vào Vercel, nhập biến môi
-  trường; AUTO làm slice 00 (Supabase local rút gọn qua Docker đã sẵn sàng).
+## Đang chờ chủ dự án — Bước 10
+- Chủ dự án đã `db push` lên DB dev (chỉ `20261024173758_init.sql`), đã tạo `.env.example` (Claude commit không đọc nội dung;
+  gitleaks quét: không rò rỉ), đồng ý dời helper gọi Server Action sang slice 02a, cho phép push `slice/00-skeleton` + tạo PR.
+- Đang chờ: CI `check` xanh trên PR slice 00 → **hỏi chủ dự án trước khi merge** → sau merge chạy
+  `BASE_URL=https://gopkeo.vercel.app npm run test:smoke` → **GATE Bước 10**.
+- Đã ghi vào slice-02a: helper `action.ts`; job CI `integration` (`supabase start` + `npm run test:int` trên GitHub Actions);
+  sau khi 02a merge, thêm `integration` vào required status checks của `main` (hỏi trước).
+
+## Slice 00 — đã làm (2026-10-25, branch `slice/00-skeleton`)
+- `supabase init`; local rút gọn: tắt realtime, storage, studio, edge runtime, analytics, smtp, GraphQL; giữ db + REST +
+  gateway + auth (auth chỉ để CLI cấp khóa local cho test; app không dùng Supabase Auth). Docker + WSL 3 GB chạy ổn.
+- Migration `supabase/migrations/20261024173758_init.sql` = nguyên `docs/03-schema.sql` (bỏ ghi chú cuối); áp local OK.
+- `lib/env.ts` (Zod, server-only, lỗi chỉ nêu tên biến), `lib/db/client.ts` (service role, server-only, no-store),
+  `lib/version.ts`, `app/api/health/route.ts` (`connection()`, truy vấn `trips`, 200/503, chỉ log mã lỗi).
+- Layout: Nunito (latin + vietnamese, swap), tokens thiết kế trong `@theme`, cột 430px; trang chủ tạm (nút Tạo kèo disabled
+  tới slice 02b); 404 "Không tìm thấy kèo này"; header bảo mật (nosniff, DENY, referrer, permissions, bỏ x-powered-by).
+- Test: Vitest 2 project (`vitest.config.mts` — đổi đuôi .mts để Vite nạp ESM, không cảnh báo); unit `parseEnv` 3 ca;
+  integration I-13 (5 ca, kiểm đúng tên ràng buộc), I-14 (RLS + 0 policy, quyền bảng anon/authenticated, REST anon 15 bảng)
+  = 22 ca xanh; Playwright smoke 3 ca xanh trên app build thật + Supabase local (`/api/health`, trang chủ + header, 404).
+- Kiểm: `npm run check` xanh; `npm run build` không cần biến môi trường; bundle `.next/static` không có chuỗi khóa server
+  (CI có bước tự kiểm); không file `.env*` trong git.
+- Subagent reviewer: 0 BLOCKER, 2 MAJOR, 7 MINOR → đã sửa hết trừ 2 điểm lệch ở trên (chờ chủ dự án).
+- Ghi nhận: schema không xóa dây chuyền từ `members` sang expenses/payments/trip_events → xóa kèo sẽ lỗi; v1 không có xóa kèo
+  nên chưa đổi schema; test tự dọn theo thứ tự.
+- `IP_HASH_SECRET` phải ≥ 32 ký tự (lệnh `node ... randomBytes(32).toString('base64url')` ra 43 ký tự, đủ); ngắn hơn thì
+  `/api/health` trả 503.
+- Chưa kiểm: CI trên GitHub với code mới; `/api/health` trên Vercel (cần db push + merge); Nunito hiển thị trên điện thoại thật.
 
 ## Quyết định Bước 9 (2026-10-24)
 | Q | Chốt |

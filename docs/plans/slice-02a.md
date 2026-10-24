@@ -31,6 +31,12 @@ Không có story người dùng. Phục vụ kiến trúc D1, D5, D8, D10; 04-co
   action, "dấu vân" DB của kèo, chạy theo vai N/K/Đ; chưa có dòng nào), `view-skeleton.test.ts` (kèo trống ra TripView hợp lệ;
   người chưa chọn tên không có `me`, `accounts`).
 
+- **Helper gọi Server Action** (dời từ slice 00, chủ dự án đồng ý 2026-10-25): `tests/integration/helpers/action.ts` —
+  `vi.mock("next/headers")` trả `cookies()`/`headers()` giả (cookie `gk_device`, `x-real-ip`), kèm test tự kiểm của helper.
+- **CI job `integration`** (yêu cầu chủ dự án 2026-10-25): thêm job mới vào `.github/workflows/ci.yml` (giữ nguyên job
+  `check`): `ubuntu-latest`, Node 22, `npm ci`, `npx supabase start` (Docker có sẵn trên runner; dùng config rút gọn của repo),
+  `npm run test:int`, `npx supabase stop` ở bước `always()`. Không cần secret (chỉ dùng Supabase local trên runner).
+
 ## File cấm sửa
 Theo [README](README.md). Thêm: `lib/domain/**` (chỉ sửa lỗi kèm test); không tạo action nghiệp vụ, không vẽ S1–S11.
 
@@ -49,3 +55,7 @@ npm run test:int
 - [ ] Mở `/k/[slug]` không đặt cookie; slug sai → trang "Không tìm thấy kèo này…"; tab bấm qua lại được.
 - [ ] `TripView` của kèo trống đúng kiểu, không có số TK, token, device id, IP.
 - [ ] Không đổi `<ts>_init.sql`; migration mới chỉ thêm hàm.
+- [ ] Helper `action.ts` có test tự kiểm; dùng được cho ma trận quyền.
+- [ ] Job CI `integration` xanh trên PR của slice 02a (cùng job `check`).
+- [ ] **Sau khi merge 02a** (hỏi chủ dự án trước, vì đổi cấu hình GitHub): thêm `integration` vào required status checks của
+      branch protection `main` (giữ `check`, strict, enforce admins, cấm force push/xóa) bằng `gh api`, rồi đọc lại xác nhận.

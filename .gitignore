@@ -9,11 +9,11 @@ node_modules/
 out/
 build/
 coverage/
+/test-results/
 *.tsbuildinfo
 next-env.d.ts
 
 # Test
-/test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/

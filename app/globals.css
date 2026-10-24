@@ -1,18 +1,50 @@
 @import "tailwindcss";
 
-/* Tạm ở Bước 9: chỉ nền và chữ chính. Toàn bộ tokens (docs/design/tokens.md) + Nunito làm ở slice 00. */
-:root {
-  --background: #fff7ee;
-  --foreground: #2a1d14;
-}
+/* Tokens từ docs/design/tokens.md (hướng A + chi tiết B, C). Một màu nhấn duy nhất: primary. */
+@theme {
+  --color-primary: #c2410c;
+  --color-on-primary: #ffffff;
+  --color-primary-soft: #fde7d8;
+  --color-primary-line: #f2b99a;
+  --color-primary-text: #a8380a;
+  --color-background: #fff7ee;
+  --color-surface: #ffffff;
+  --color-surface-muted: #fbeadb;
+  --color-text: #2a1d14;
+  --color-text-muted: #6b5546;
+  --color-text-muted-strong: #5a4536;
+  --color-border: #ebd9c8;
+  --color-border-strong: #c9ae97;
+  --color-danger: #b42318;
+  --color-danger-soft: #fbe7e4;
+  --color-notify-dot: #d92d20;
+  --color-scrim: rgb(42 29 20 / 0.45);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+
+  --text-display: 28px;
+  --text-display--line-height: 34px;
+  --text-title: 22px;
+  --text-title--line-height: 28px;
+  --text-heading: 19px;
+  --text-heading--line-height: 26px;
+  --text-body: 17px;
+  --text-body--line-height: 25px;
+  --text-caption: 15px;
+  --text-caption--line-height: 20px;
+  --text-money: 34px;
+  --text-money--line-height: 40px;
+
+  --radius-card: 18px;
+  --radius-input: 14px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
 }
+
+/* Số tiền: dùng tiện ích có sẵn `tabular-nums` của Tailwind (tokens.md). */

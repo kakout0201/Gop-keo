@@ -26,3 +26,8 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
+      - name: Bundle client không chứa khóa server
+        run: |
+          if grep -rqE "service_role|SUPABASE_SERVICE_ROLE_KEY|IP_HASH_SECRET|sb_secret_" .next/static; then
+            echo "Tìm thấy chuỗi khóa server trong bundle client"; exit 1
+          fi

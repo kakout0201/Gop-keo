@@ -1,7 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 10 — Slice 00 (walking skeleton)**, đang ở phần **USER** (Supabase dev + Vercel).
-Bước 9 xong: PR #1 merge vào `main` (merge commit 9c02f91, 2026-10-25). Branch `slice/00-skeleton` đã tạo, chưa có code.
+Bước hiện tại: **Bước 10 — Slice 00**, code xong ở máy trên branch `slice/00-skeleton` (chưa push).
+Đang chờ chủ dự án: (1) tự chạy `supabase link` + `db push` lên DB dev; (2) cho phép push branch + tạo PR; (3) quyết 2 điểm lệch kế hoạch.
 
 ## Đã xong
 - Bước 1: môi trường (Git, Node 22, VS Code, tài khoản GitHub/Vercel/Supabase). Repo nhánh `main`.
@@ -103,14 +103,37 @@ Bước 9 xong: PR #1 merge vào `main` (merge commit 9c02f91, 2026-10-25). Bran
   (tác giả email noreply, không dòng ghi công). Nhánh `chore/repo-setup` vẫn còn trên GitHub (chưa xóa).
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
-## Đang chờ chủ dự án — Bước 10 (USER)
-1. Tạo project Supabase **dev** trên cloud (`gop-keo-dev`, Singapore, gói Free).
-2. Import repo vào Vercel, nhập 4 biến môi trường cho Production + Preview: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
-   (Sensitive), `IP_HASH_SECRET` (tự tạo, Sensitive), `APP_URL`. Deploy lần đầu.
-3. Báo lại: link Vercel production và **project ref** Supabase (KHÔNG dán khóa vào chat).
-Chưa cần `.env.local`: dev và test chạy Supabase **local**; slice 00 sẽ hướng dẫn tạo `.env.local` trỏ về local.
-Sau đó AUTO: slice 00 trên branch `slice/00-skeleton` (supabase init rút gọn, migration init, /api/health, test) →
-hỏi trước khi `supabase link` + `db push` lên dev → GATE: trang chủ và /api/health chạy trên link Vercel.
+## Đang chờ chủ dự án — Bước 10
+1. **USER — đưa schema lên DB dev** (Claude bị luật deny chặn `db push`, và lệnh cần đăng nhập + mật khẩu DB):
+   `npx supabase login` → `npx supabase link --project-ref tjzlluomausmjgzlsmjs` (nhập mật khẩu DB) → `npx supabase db push`
+   (xác nhận áp `20261024173758_init.sql`).
+2. **ASK — push `slice/00-skeleton` + tạo PR** vào `main`; CI xanh → merge → Vercel production deploy →
+   `BASE_URL=https://gopkeo.vercel.app npm run test:smoke` → **GATE Bước 10**: trang chủ + `/api/health` trên link Vercel.
+3. **ASK — 2 điểm lệch kế hoạch slice 00:**
+   - Helper integration "gọi Server Action với cookie + `x-real-ip` giả" dời sang **slice 02a** (cookie thiết bị, `lib/ip.ts`
+     thuộc 02a; chưa có action nào để gọi).
+   - `.env.example` chưa tạo: công cụ ghi file bị luật deny `Read(./**/.env.*)` chặn. Chủ dự án tự tạo (nội dung trong tin
+     nhắn phiên 2026-10-25) hoặc cho phép Claude.
+
+## Slice 00 — đã làm (2026-10-25, branch `slice/00-skeleton`)
+- `supabase init`; local rút gọn: tắt realtime, storage, studio, edge runtime, analytics, smtp, GraphQL; giữ db + REST +
+  gateway + auth (auth chỉ để CLI cấp khóa local cho test; app không dùng Supabase Auth). Docker + WSL 3 GB chạy ổn.
+- Migration `supabase/migrations/20261024173758_init.sql` = nguyên `docs/03-schema.sql` (bỏ ghi chú cuối); áp local OK.
+- `lib/env.ts` (Zod, server-only, lỗi chỉ nêu tên biến), `lib/db/client.ts` (service role, server-only, no-store),
+  `lib/version.ts`, `app/api/health/route.ts` (`connection()`, truy vấn `trips`, 200/503, chỉ log mã lỗi).
+- Layout: Nunito (latin + vietnamese, swap), tokens thiết kế trong `@theme`, cột 430px; trang chủ tạm (nút Tạo kèo disabled
+  tới slice 02b); 404 "Không tìm thấy kèo này"; header bảo mật (nosniff, DENY, referrer, permissions, bỏ x-powered-by).
+- Test: Vitest 2 project (`vitest.config.mts` — đổi đuôi .mts để Vite nạp ESM, không cảnh báo); unit `parseEnv` 3 ca;
+  integration I-13 (5 ca, kiểm đúng tên ràng buộc), I-14 (RLS + 0 policy, quyền bảng anon/authenticated, REST anon 15 bảng)
+  = 22 ca xanh; Playwright smoke 3 ca xanh trên app build thật + Supabase local (`/api/health`, trang chủ + header, 404).
+- Kiểm: `npm run check` xanh; `npm run build` không cần biến môi trường; bundle `.next/static` không có chuỗi khóa server
+  (CI có bước tự kiểm); không file `.env*` trong git.
+- Subagent reviewer: 0 BLOCKER, 2 MAJOR, 7 MINOR → đã sửa hết trừ 2 điểm lệch ở trên (chờ chủ dự án).
+- Ghi nhận: schema không xóa dây chuyền từ `members` sang expenses/payments/trip_events → xóa kèo sẽ lỗi; v1 không có xóa kèo
+  nên chưa đổi schema; test tự dọn theo thứ tự.
+- `IP_HASH_SECRET` phải ≥ 32 ký tự (lệnh `node ... randomBytes(32).toString('base64url')` ra 43 ký tự, đủ); ngắn hơn thì
+  `/api/health` trả 503.
+- Chưa kiểm: CI trên GitHub với code mới; `/api/health` trên Vercel (cần db push + merge); Nunito hiển thị trên điện thoại thật.
 
 ## Quyết định Bước 9 (2026-10-24)
 | Q | Chốt |

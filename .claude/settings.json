@@ -10,25 +10,48 @@
       "Bash(git switch:*)",
       "Bash(git checkout:*)",
       "Bash(git worktree:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git show:*)",
       "Bash(npm run:*)",
       "Bash(npm install:*)",
       "Bash(npm i:*)",
+      "Bash(npm ls:*)",
       "Bash(ls:*)",
-      "Bash(node -v)"
+      "Bash(node -v)",
+      "Bash(npx vitest:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx prettier:*)",
+      "Bash(npx next typegen)",
+      "Bash(npx playwright test:*)",
+      "Bash(npx supabase status)",
+      "Bash(npx supabase start:*)",
+      "Bash(npx supabase stop:*)",
+      "Bash(npx supabase migration new:*)",
+      "Bash(npx supabase migration up:*)",
+      "Bash(npx supabase db reset)",
+      "Bash(npx supabase db reset --local:*)"
     ],
     "ask": [
       "Bash(git push:*)",
       "Bash(gh:*)",
       "Bash(npx:*)",
       "Bash(git merge:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(npx supabase link:*)",
+      "Bash(npx playwright install:*)"
     ],
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
       "Bash(git push --force:*)",
       "Bash(git push -f:*)",
+      "Bash(git push --force-with-lease:*)",
       "Bash(npx supabase db push:*)",
+      "Bash(npx supabase db reset --linked:*)",
       "Bash(rm -rf:*)"
     ]
   }

@@ -25,7 +25,8 @@ Không có story người dùng. Phục vụ NFR (PRD §6) và kiến trúc D1, 
   `tests/integration/helpers/` (tạo client DB test, dọn dữ liệu theo `trip_id`, gọi Server Action với cookie và
   `x-real-ip` giả), `tests/integration/schema.test.ts` (I-13, I-14), `tests/smoke/health.spec.ts` (`@smoke`),
   `tests/unit/env.test.ts`.
-- `.github/workflows/ci.yml`: `npm ci` + `npm run check` (không cần secret).
+- `.github/workflows/ci.yml`: đã tạo ở Bước 9 (job `check`: `npm ci`, `npm run check`, `npm run build`, không cần secret);
+  slice 00 giữ nguyên tên job (branch protection trỏ vào nó), chỉ thêm bước nếu cần.
 
 ## File cấm sửa
 Theo [README](README.md). Thêm: không tạo route, action hay component nghiệp vụ (để slice sau).

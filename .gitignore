@@ -1,0 +1,33 @@
+# Bí mật — không bao giờ commit (CLAUDE.md)
+.env
+.env.*
+!.env.example
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Test
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Vercel
+.vercel/
+
+# Hệ điều hành / editor
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+.claude/settings.local.json

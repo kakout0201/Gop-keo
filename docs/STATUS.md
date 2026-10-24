@@ -1,7 +1,7 @@
 # STATUS — Góp Kèo
 
-Bước hiện tại: **Bước 9 — Thiết lập repo**. Repo GitHub đã tạo lại (cách C), đã push, PR mới
-https://github.com/kakout0201/Gop-keo/pull/1 (`chore/repo-setup` → `main`). Đang chờ: CI `check` xanh rồi **chủ dự án cho phép merge**.
+Bước hiện tại: **Bước 10 — Slice 00 (walking skeleton)**, đang ở phần **USER** (Supabase dev + Vercel).
+Bước 9 xong: PR #1 merge vào `main` (merge commit 9c02f91, 2026-10-25). Branch `slice/00-skeleton` đã tạo, chưa có code.
 
 ## Đã xong
 - Bước 1: môi trường (Git, Node 22, VS Code, tài khoản GitHub/Vercel/Supabase). Repo nhánh `main`.
@@ -99,12 +99,18 @@ https://github.com/kakout0201/Gop-keo/pull/1 (`chore/repo-setup` → `main`). Đ
     Script `force-push-rewrite.ps1` trong scratchpad đã xóa. CLAUDE.md mục Bài học: đặt attribution từ đầu dự án.
   - Chưa: `supabase init` + cấu hình rút gọn (slice 00, cần Docker); Playwright + trình duyệt (slice 02b); không gọi subagent
     reviewer cho Bước 9 (chỉ cấu hình, đã tự kiểm `check` + build + gitleaks).
+- Bước 9 kết thúc (2026-10-25): CI `check` xanh trên commit 116739c; chủ dự án cho phép; merge PR #1 bằng merge commit
+  (tác giả email noreply, không dòng ghi công). Nhánh `chore/repo-setup` vẫn còn trên GitHub (chưa xóa).
 - PLAYBOOK: Bước 10 liệt kê biến môi trường (thêm `IP_HASH_SECRET`); Bước 19 bỏ "bật auth ẩn danh" (Q12).
 
-## Đang chờ chủ dự án — Bước 9
-- CI `check` trên PR #1 (repo mới) xanh → chủ dự án cho phép merge (merge = hành động ra ngoài, phải hỏi).
-- Sau merge: **Bước 10** — USER tạo Supabase project dev (cloud, cho preview Vercel), import repo vào Vercel, nhập biến môi
-  trường; AUTO làm slice 00 (Supabase local rút gọn qua Docker đã sẵn sàng).
+## Đang chờ chủ dự án — Bước 10 (USER)
+1. Tạo project Supabase **dev** trên cloud (`gop-keo-dev`, Singapore, gói Free).
+2. Import repo vào Vercel, nhập 4 biến môi trường cho Production + Preview: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
+   (Sensitive), `IP_HASH_SECRET` (tự tạo, Sensitive), `APP_URL`. Deploy lần đầu.
+3. Báo lại: link Vercel production và **project ref** Supabase (KHÔNG dán khóa vào chat).
+Chưa cần `.env.local`: dev và test chạy Supabase **local**; slice 00 sẽ hướng dẫn tạo `.env.local` trỏ về local.
+Sau đó AUTO: slice 00 trên branch `slice/00-skeleton` (supabase init rút gọn, migration init, /api/health, test) →
+hỏi trước khi `supabase link` + `db push` lên dev → GATE: trang chủ và /api/health chạy trên link Vercel.
 
 ## Quyết định Bước 9 (2026-10-24)
 | Q | Chốt |
